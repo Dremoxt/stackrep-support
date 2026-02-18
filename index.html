@@ -1,112 +1,363 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Move Now - Support</title>
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: #f9f9f9;
-            color: #333;
-            line-height: 1.6;
-        }
-        .container {
-            max-width: 640px;
-            margin: 0 auto;
-            padding: 60px 24px;
-        }
-        .logo {
-            width: 80px;
-            height: 80px;
-            border-radius: 18px;
-            margin-bottom: 24px;
-        }
-        h1 {
-            font-size: 2rem;
-            margin-bottom: 8px;
-            color: #1a1a1a;
-        }
-        .tagline {
-            color: #666;
-            font-size: 1.1rem;
-            margin-bottom: 40px;
-        }
-        h2 {
-            font-size: 1.3rem;
-            margin-bottom: 12px;
-            color: #1a1a1a;
-        }
-        section {
-            margin-bottom: 36px;
-        }
-        p, li {
-            color: #555;
-            font-size: 1rem;
-        }
-        ul {
-            padding-left: 20px;
-            margin-top: 8px;
-        }
-        li { margin-bottom: 6px; }
-        a {
-            color: #E8891D;
-            text-decoration: none;
-        }
-        a:hover { text-decoration: underline; }
-        .contact-box {
-            background: #fff;
-            border: 1px solid #e0e0e0;
-            border-radius: 12px;
-            padding: 24px;
-        }
-        footer {
-            margin-top: 60px;
-            padding-top: 24px;
-            border-top: 1px solid #e0e0e0;
-            color: #999;
-            font-size: 0.85rem;
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Stackrep Fitness - Build a Habit to Move Every Day</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Russo+One&display=swap" rel="stylesheet">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  background: #f8fafc;
+  color: #1e293b;
+  min-height: 100vh;
+  line-height: 1.6;
+}
+.container { max-width: 900px; margin: 0 auto; padding: 40px 20px; }
+
+/* Header */
+.header { text-align: center; margin-bottom: 60px; padding-top: 20px; }
+.logo {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 150px; height: 150px;
+  background: #E8891D;
+  border-radius: 32px;
+  margin-bottom: 28px;
+  box-shadow: 0 20px 50px rgba(232,137,29,0.4);
+  overflow: hidden;
+}
+.logo img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  border-radius: 32px;
+}
+h1 { font-size: 52px; font-weight: 800; margin-bottom: 16px; color: #1e293b; }
+h1 span { color: #E8891D; }
+.tagline { font-size: 22px; color: #64748b; margin-bottom: 36px; font-weight: 500; }
+.cta-button {
+  display: inline-block; padding: 18px 48px;
+  background: #E8891D; color: white;
+  text-decoration: none; font-size: 18px; font-weight: 600;
+  border-radius: 14px;
+  transition: transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 10px 30px rgba(232,137,29,0.3);
+}
+.cta-button:hover { transform: translateY(-3px); box-shadow: 0 15px 40px rgba(232,137,29,0.4); }
+
+/* App Store Badge */
+.store-badges { display: flex; justify-content: center; gap: 16px; margin-top: 20px; }
+.store-badge {
+  height: 52px;
+  transition: transform 0.2s;
+}
+.store-badge:hover { transform: scale(1.05); }
+
+/* Sections */
+.section { margin-bottom: 60px; }
+.section-title { font-size: 32px; font-weight: 700; margin-bottom: 24px; color: #1e293b; text-align: center; }
+
+/* Philosophy */
+.philosophy-card {
+  background: white; border-radius: 24px; padding: 40px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.06); border: 1px solid #e2e8f0;
+}
+.philosophy-card p { font-size: 18px; color: #475569; margin-bottom: 20px; line-height: 1.8; }
+.philosophy-card p:last-child { margin-bottom: 0; }
+.highlight { color: #E8891D; font-weight: 600; }
+.highlight-red { color: #e63946; font-weight: 600; }
+
+/* Steps */
+.steps { display: grid; gap: 20px; }
+.step {
+  display: flex; align-items: flex-start; gap: 20px;
+  background: white; border-radius: 20px; padding: 28px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.06); border: 1px solid #e2e8f0;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.step:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(0,0,0,0.1); }
+.step-number {
+  display: flex; align-items: center; justify-content: center;
+  width: 52px; height: 52px; background: #E8891D; border-radius: 16px;
+  font-size: 22px; font-weight: 700; color: white; flex-shrink: 0;
+}
+.step-content h3 { font-size: 20px; font-weight: 600; margin-bottom: 8px; color: #1e293b; }
+.step-content p { color: #64748b; font-size: 16px; line-height: 1.6; }
+
+/* Features */
+.features { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+@media (max-width: 768px) { .features { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 500px) {
+  .features { grid-template-columns: 1fr; }
+  h1 { font-size: 32px; }
+  .tagline { font-size: 18px; }
+  .logo { width: 110px; height: 110px; }
+  .philosophy-card { padding: 24px; }
+  .philosophy-card p { font-size: 16px; }
+  .section-title { font-size: 26px; }
+  .step { padding: 20px; }
+  .cta-section { padding: 40px 24px; }
+  .cta-section h2 { font-size: 28px; }
+}
+.feature {
+  background: white; border-radius: 20px; padding: 28px; text-align: center;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.06); border: 1px solid #e2e8f0;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.feature:hover { transform: translateY(-3px); box-shadow: 0 8px 30px rgba(0,0,0,0.1); }
+.feature-icon { font-size: 40px; margin-bottom: 16px; }
+.feature h3 { font-size: 18px; font-weight: 600; margin-bottom: 8px; color: #1e293b; }
+.feature p { font-size: 14px; color: #64748b; line-height: 1.5; }
+
+/* Categories */
+.categories-container {
+  background: white; border-radius: 24px; padding: 40px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.06); border: 1px solid #e2e8f0;
+}
+.categories-subtitle { color: #64748b; margin-bottom: 24px; text-align: center; font-size: 16px; }
+.categories { display: flex; flex-wrap: wrap; gap: 14px; justify-content: center; }
+.category-tag {
+  display: flex; align-items: center; gap: 10px;
+  background: rgba(232,137,29,0.1); border: 1px solid rgba(232,137,29,0.2);
+  border-radius: 50px; padding: 12px 22px;
+  font-size: 15px; font-weight: 500; color: #E8891D;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.category-tag:hover { transform: scale(1.05); box-shadow: 0 4px 15px rgba(232,137,29,0.2); }
+
+/* Pricing */
+.pricing { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; max-width: 600px; margin: 0 auto; }
+@media (max-width: 500px) { .pricing { grid-template-columns: 1fr; } }
+.pricing-card {
+  background: white; border-radius: 20px; padding: 32px; text-align: center;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.06); border: 1px solid #e2e8f0;
+  transition: transform 0.2s;
+}
+.pricing-card.featured {
+  border: 2px solid #E8891D;
+  box-shadow: 0 8px 30px rgba(232,137,29,0.15);
+}
+.pricing-card:hover { transform: translateY(-3px); }
+.pricing-card h3 { font-size: 22px; font-weight: 700; margin-bottom: 8px; }
+.pricing-price { font-size: 36px; font-weight: 800; color: #E8891D; margin-bottom: 8px; }
+.pricing-period { font-size: 14px; color: #94a3b8; margin-bottom: 20px; }
+.pricing-features { list-style: none; text-align: left; }
+.pricing-features li {
+  padding: 6px 0; font-size: 14px; color: #475569;
+  display: flex; align-items: center; gap: 8px;
+}
+.pricing-features li::before { content: "✓"; color: #E8891D; font-weight: 700; }
+
+/* CTA Section */
+.cta-section {
+  text-align: center; background: #E8891D; border-radius: 28px;
+  padding: 60px 40px; color: white;
+  box-shadow: 0 20px 50px rgba(232,137,29,0.3);
+}
+.cta-section h2 { font-size: 36px; font-weight: 700; margin-bottom: 16px; }
+.cta-section p { font-size: 18px; margin-bottom: 28px; opacity: 0.9; }
+.cta-button-white {
+  display: inline-block; padding: 18px 48px;
+  background: white; color: #E8891D;
+  text-decoration: none; font-size: 18px; font-weight: 600;
+  border-radius: 14px;
+  transition: transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+}
+.cta-button-white:hover { transform: translateY(-3px); box-shadow: 0 15px 40px rgba(0,0,0,0.2); }
+
+/* Support */
+.support-section {
+  text-align: center; margin-top: 40px; padding: 32px;
+  background: white; border-radius: 20px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.06); border: 1px solid #e2e8f0;
+}
+.support-section h3 { font-size: 20px; font-weight: 600; margin-bottom: 12px; }
+.support-section p { color: #64748b; font-size: 15px; }
+.support-section a { color: #E8891D; text-decoration: none; font-weight: 500; }
+.support-section a:hover { text-decoration: underline; }
+
+/* Privacy */
+.privacy-section {
+  text-align: center; margin-top: 20px; padding: 24px;
+}
+.privacy-section p { color: #94a3b8; font-size: 14px; }
+
+/* Footer */
+.footer { text-align: center; padding-top: 30px; padding-bottom: 20px; color: #94a3b8; font-size: 14px; }
+</style>
 </head>
 <body>
-    <div class="container">
-        <h1>Move Now</h1>
-        <p class="tagline">Track your daily workout sets and reach your fitness goals.</p>
+<div class="container">
 
-        <section>
-            <h2>About</h2>
-            <p>Move Now helps you track your daily exercise sets across muscle groups, set weekly goals, and monitor your progress over time. Stay consistent and build healthy workout habits.</p>
-        </section>
-
-        <section>
-            <h2>Features</h2>
-            <ul>
-                <li>Track sets for chest, back, shoulders, biceps, triceps, legs, abs, and cardio</li>
-                <li>Set daily and weekly workout goals</li>
-                <li>View your workout history on a calendar</li>
-                <li>Monthly stats and personal records</li>
-                <li>Dark mode support</li>
-            </ul>
-        </section>
-
-        <section>
-            <h2>Support</h2>
-            <div class="contact-box">
-                <p>Having trouble or have a suggestion? We'd love to hear from you.</p>
-                <p style="margin-top: 12px;">Email: <a href="mailto:gyepesarpi@gmail.com">gyepesarpi@gmail.com</a></p>
-            </div>
-        </section>
-
-        <section>
-            <h2>Privacy</h2>
-            <p>Move Now stores all your data locally on your device. We do not collect, store, or share any personal information.</p>
-        </section>
-
-        <footer>
-            <p>&copy; 2026 Move Now. All rights reserved.</p>
-        </footer>
+  <!-- Header -->
+  <div class="header">
+    <div class="logo">
+      <img src="icon.png" alt="Stackrep Fitness">
     </div>
+    <h1><span>Stackrep</span> Fitness</h1>
+    <p class="tagline">Build a habit to move every day</p>
+    <a href="#" class="cta-button">Download on the App Store</a>
+  </div>
+
+  <!-- Philosophy -->
+  <div class="section">
+    <h2 class="section-title">The Philosophy</h2>
+    <div class="philosophy-card">
+      <p>Movement is medicine. But going to the gym every day isn't realistic for most people. Life gets busy. Schedules change. Energy fluctuates.</p>
+      <p><span class="highlight">Stackrep Fitness</span> is built on a simple idea: <span class="highlight-red">consistency beats intensity.</span> Instead of crushing yourself 3 times a week, do a little bit every day. 8 categories, a few sets each — that's it.</p>
+      <p>Set different goals for different days. Take rest days when you need them. The app adapts to your life, not the other way around.</p>
+    </div>
+  </div>
+
+  <!-- How It Works -->
+  <div class="section">
+    <h2 class="section-title">How It Works</h2>
+    <div class="steps">
+      <div class="step">
+        <div class="step-number">1</div>
+        <div class="step-content">
+          <h3>Choose Your Categories</h3>
+          <p>Pick exercise types that matter to you — chest, back, shoulders, legs, cardio, whatever fits your goals.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-number">2</div>
+        <div class="step-content">
+          <h3>Set Weekly Goals</h3>
+          <p>Configure different targets for each day. More sets on weekends? Rest on Wednesdays? You decide.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-number">3</div>
+        <div class="step-content">
+          <h3>Tap to Track</h3>
+          <p>Complete a set? Tap the category. Watch your progress fill up. Simple, satisfying, effective.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-number">4</div>
+        <div class="step-content">
+          <h3>Build the Streak</h3>
+          <p>Track your weekly and monthly averages. See your consistency grow. Rest days don't count against you.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Features -->
+  <div class="section">
+    <h2 class="section-title">Features</h2>
+    <div class="features">
+      <div class="feature">
+        <div class="feature-icon">📱</div>
+        <h3>Works Offline</h3>
+        <p>All data stored locally on your device. No internet needed.</p>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">📅</div>
+        <h3>Flexible Goals</h3>
+        <p>Different targets for each weekday. Rest days built in.</p>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">📊</div>
+        <h3>Progress Stats</h3>
+        <p>Weekly and monthly averages. Category breakdowns.</p>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">📆</div>
+        <h3>History Calendar</h3>
+        <p>Visual calendar showing your daily achievements at a glance.</p>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">🎨</div>
+        <h3>Clean Design</h3>
+        <p>No clutter. Just tap and track. Dark mode included.</p>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">🏆</div>
+        <h3>Personal Records</h3>
+        <p>Track your best months and beat your own records.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Categories -->
+  <div class="section">
+    <h2 class="section-title">Default Categories</h2>
+    <div class="categories-container">
+      <p class="categories-subtitle">Customize these to fit your routine</p>
+      <div class="categories">
+        <div class="category-tag">💪 Chest</div>
+        <div class="category-tag">🏋️ Back</div>
+        <div class="category-tag">🤸 Shoulders</div>
+        <div class="category-tag">💪 Biceps</div>
+        <div class="category-tag">💪 Triceps</div>
+        <div class="category-tag">🦵 Legs</div>
+        <div class="category-tag">🧘 Abs</div>
+        <div class="category-tag">🏃 Cardio</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Pricing -->
+  <div class="section">
+    <h2 class="section-title">Simple Pricing</h2>
+    <div class="pricing">
+      <div class="pricing-card">
+        <h3>60-Day Free Trial</h3>
+        <div class="pricing-price">Free</div>
+        <div class="pricing-period">for 60 days</div>
+        <ul class="pricing-features">
+          <li>All premium features unlocked</li>
+          <li>Custom categories</li>
+          <li>Flexible weekly goals</li>
+          <li>Full history & stats</li>
+          <li>No credit card required</li>
+        </ul>
+      </div>
+      <div class="pricing-card featured">
+        <h3>Premium</h3>
+        <div class="pricing-price">$4.99</div>
+        <div class="pricing-period">one-time purchase</div>
+        <ul class="pricing-features">
+          <li>Everything in free trial</li>
+          <li>Unlimited access forever</li>
+          <li>Edit past days</li>
+          <li>Category reordering</li>
+          <li>All future updates included</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div class="cta-section">
+    <h2>Ready to Stack Your Reps?</h2>
+    <p>Start your 60-day free trial today. No strings attached.</p>
+    <a href="#" class="cta-button-white">Download Stackrep Fitness</a>
+  </div>
+
+  <!-- Support -->
+  <div class="support-section">
+    <h3>Need Help?</h3>
+    <p>Having trouble or have a suggestion? We'd love to hear from you.</p>
+    <p style="margin-top: 8px;">Email: <a href="mailto:gyepesarpi@gmail.com">gyepesarpi@gmail.com</a></p>
+  </div>
+
+  <!-- Privacy -->
+  <div class="privacy-section">
+    <p>Stackrep Fitness stores all your data locally on your device. We do not collect, store, or share any personal information.</p>
+  </div>
+
+  <!-- Footer -->
+  <div class="footer">
+    <p>&copy; 2026 Stackrep Fitness. All rights reserved.</p>
+  </div>
+
+</div>
 </body>
 </html>
