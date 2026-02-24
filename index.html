@@ -126,41 +126,12 @@ nav {
 }
 .btn-secondary:hover { background: rgba(255,255,255,0.1); transform: translateY(-2px); }
 
-/* Phone Mockup */
+/* Phone Screenshot */
 .hero-visual { display: flex; justify-content: center; position: relative; }
-.phone-mockup {
-  width: 280px; height: 560px;
-  background: linear-gradient(145deg, #1a1a2e, #16162a);
-  border-radius: 40px; border: 3px solid rgba(255,255,255,0.08);
+.phone-screenshot {
+  width: 280px; border-radius: 32px;
   box-shadow: 0 40px 80px rgba(0,0,0,0.5), 0 0 100px rgba(232,137,29,0.08);
-  display: flex; flex-direction: column; align-items: center;
-  padding: 20px 16px; position: relative; overflow: hidden;
 }
-.phone-notch {
-  width: 120px; height: 28px; background: #0a0a0f;
-  border-radius: 0 0 16px 16px; margin-bottom: 20px;
-}
-.phone-screen { width: 100%; flex: 1; display: flex; flex-direction: column; gap: 10px; }
-.phone-header { text-align: center; margin-bottom: 8px; }
-.phone-header h3 { font-size: 16px; font-weight: 700; }
-.phone-header p { font-size: 11px; color: #8a8a9a; }
-.phone-ring {
-  width: 80px; height: 80px; border-radius: 50%;
-  border: 5px solid #E8891D; margin: 4px auto 12px;
-  display: flex; align-items: center; justify-content: center;
-  font-size: 18px; font-weight: 800; color: #E8891D;
-  box-shadow: 0 0 20px rgba(232,137,29,0.2);
-}
-.phone-cats { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
-.phone-cat {
-  background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08);
-  border-radius: 10px; padding: 8px; text-align: center;
-}
-.phone-cat .emoji { font-size: 16px; }
-.phone-cat .name { font-size: 9px; color: #8a8a9a; margin-top: 2px; }
-.phone-cat .dots { display: flex; gap: 3px; justify-content: center; margin-top: 4px; }
-.phone-cat .dot-fill { width: 6px; height: 6px; border-radius: 50%; background: #E8891D; }
-.phone-cat .dot-empty { width: 6px; height: 6px; border-radius: 50%; background: rgba(255,255,255,0.12); }
 
 .hero-glow {
   position: absolute; width: 400px; height: 400px;
@@ -175,7 +146,7 @@ nav {
   .hero-buttons { justify-content: center; }
   .hero-badge { margin-left: auto; margin-right: auto; }
   .hero-visual { margin-top: 40px; }
-  .phone-mockup { width: 240px; height: 480px; }
+  .phone-screenshot { width: 240px; }
 }
 
 /* ===== FEATURES ===== */
@@ -392,7 +363,6 @@ footer {
     <ul class="nav-links" id="navLinks">
       <li><a href="#features">Features</a></li>
       <li><a href="#how">How It Works</a></li>
-      <li><a href="#reviews">Reviews</a></li>
       <li><a href="#pricing">Pricing</a></li>
     </ul>
     <a href="#pricing" class="nav-cta">Start Free Trial</a>
@@ -424,22 +394,7 @@ footer {
       </div>
       <div class="hero-visual">
         <div class="hero-glow"></div>
-        <div class="phone-mockup">
-          <div class="phone-notch"></div>
-          <div class="phone-screen">
-            <div class="phone-header">
-              <h3>Today</h3>
-              <p>Feb 18, 2026</p>
-            </div>
-            <div class="phone-ring">87%</div>
-            <div class="phone-cats">
-              <div class="phone-cat"><div class="emoji">💪</div><div class="name">Chest</div><div class="dots"><span class="dot-fill"></span><span class="dot-fill"></span><span class="dot-fill"></span><span class="dot-fill"></span></div></div>
-              <div class="phone-cat"><div class="emoji">🏋️</div><div class="name">Back</div><div class="dots"><span class="dot-fill"></span><span class="dot-fill"></span><span class="dot-fill"></span><span class="dot-empty"></span></div></div>
-              <div class="phone-cat"><div class="emoji">🦵</div><div class="name">Legs</div><div class="dots"><span class="dot-fill"></span><span class="dot-fill"></span><span class="dot-empty"></span><span class="dot-empty"></span></div></div>
-              <div class="phone-cat"><div class="emoji">🏃</div><div class="name">Cardio</div><div class="dots"><span class="dot-fill"></span><span class="dot-fill"></span><span class="dot-fill"></span><span class="dot-fill"></span></div></div>
-            </div>
-          </div>
-        </div>
+        <img src="app-screenshot.png" alt="Stackrep Fitness app screenshot" class="phone-screenshot">
       </div>
     </div>
   </div>
@@ -513,49 +468,6 @@ footer {
   </div>
 </section>
 
-<!-- TESTIMONIALS -->
-<section class="testimonials-section" id="reviews">
-  <div class="container">
-    <div class="section-label fade-up">Reviews</div>
-    <h2 class="section-title fade-up">Loved by real people.</h2>
-    <p class="section-sub fade-up">People who stopped overcomplicating fitness and started stacking reps.</p>
-    <div class="testimonials-grid">
-      <div class="testimonial-card fade-up">
-        <div class="stars">★★★★★</div>
-        <blockquote>"I've tried every fitness app out there. This is the first one that actually stuck. No overwhelming features — just track your sets and go."</blockquote>
-        <div class="testimonial-author">
-          <div class="author-avatar">M</div>
-          <div class="author-info">
-            <div class="name">Mark T.</div>
-            <div class="role">Software Developer</div>
-          </div>
-        </div>
-      </div>
-      <div class="testimonial-card fade-up">
-        <div class="stars">★★★★★</div>
-        <blockquote>"The weekday goals feature is genius. I do more on weekends when I have time, and less on busy weekdays. Finally an app that gets it."</blockquote>
-        <div class="testimonial-author">
-          <div class="author-avatar">S</div>
-          <div class="author-info">
-            <div class="name">Sarah K.</div>
-            <div class="role">Marketing Manager</div>
-          </div>
-        </div>
-      </div>
-      <div class="testimonial-card fade-up">
-        <div class="stars">★★★★★</div>
-        <blockquote>"I went from working out 2x a week to doing something every single day. The simplicity is the secret. Just tap and go."</blockquote>
-        <div class="testimonial-author">
-          <div class="author-avatar">J</div>
-          <div class="author-info">
-            <div class="name">James R.</div>
-            <div class="role">Personal Trainer</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
 
 <!-- PRICING -->
 <section id="pricing">
@@ -616,11 +528,6 @@ footer {
           <img src="icon.png" alt="Stackrep" style="width:36px;height:36px;border-radius:8px;display:inline-block;vertical-align:middle;"> Stackrep Fitness
         </a>
         <p>Build a daily movement habit. Track your sets, stay consistent, and become the person who moves every day.</p>
-        <div class="social-links">
-          <a href="#" class="social-link" aria-label="Twitter">𝕏</a>
-          <a href="#" class="social-link" aria-label="Instagram">📷</a>
-          <a href="#" class="social-link" aria-label="TikTok">🎵</a>
-        </div>
       </div>
       <div class="footer-col">
         <h4>Product</h4>
@@ -628,7 +535,6 @@ footer {
           <li><a href="#features">Features</a></li>
           <li><a href="#pricing">Pricing</a></li>
           <li><a href="#how">How It Works</a></li>
-          <li><a href="#reviews">Reviews</a></li>
         </ul>
       </div>
       <div class="footer-col">
