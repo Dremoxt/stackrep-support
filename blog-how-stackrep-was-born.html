@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>How Stackrep Was Born: From a Notebook to an App — Stackrep Fitness</title>
+<meta name="description" content="I didn't build Stackrep because I wanted to make a fitness app. I built it because I needed one that didn't exist. Here's the story.">
+<meta property="og:title" content="How Stackrep Was Born: From a Notebook to an App">
+<meta property="og:description" content="I didn't build Stackrep because I wanted to make a fitness app. I built it because I needed one that didn't exist.">
+<meta property="og:image" content="https://stackrep.fit/app-screenshot.png">
+<meta property="og:url" content="https://stackrep.fit/blog-how-stackrep-was-born.html">
+<meta property="og:type" content="article">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="How Stackrep Was Born: From a Notebook to an App">
+<meta name="twitter:description" content="I didn't build Stackrep because I wanted to make a fitness app. I built it because I needed one that didn't exist.">
+<meta name="twitter:image" content="https://stackrep.fit/app-screenshot.png">
+<link rel="icon" type="image/png" href="icon.png">
+<link rel="apple-touch-icon" href="icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+/* ===== RESET & BASE ===== */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  background: #0a0a0f;
+  color: #ffffff;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+a { color: #E8891D; text-decoration: none; transition: color 0.2s; }
+a:hover { color: #f5a040; text-decoration: underline; }
+img { max-width: 100%; display: block; }
+
+/* ===== NAV ===== */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  background: rgba(10,10,15,0.85); backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+.nav-inner {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 16px 24px; max-width: 1100px; margin: 0 auto;
+}
+.nav-brand {
+  display: flex; align-items: center; gap: 12px;
+  font-size: 20px; font-weight: 800; color: #fff; text-decoration: none;
+}
+.nav-brand:hover { color: #fff; text-decoration: none; }
+.nav-brand img { width: 36px; height: 36px; border-radius: 8px; }
+.nav-links { display: flex; gap: 32px; list-style: none; }
+.nav-links a {
+  font-size: 14px; font-weight: 500; color: #8a8a9a;
+  transition: color 0.2s; text-decoration: none;
+}
+.nav-links a:hover { color: #fff; text-decoration: none; }
+.nav-cta {
+  padding: 10px 24px; background: #E8891D; color: #fff;
+  font-size: 14px; font-weight: 600; border-radius: 10px;
+  transition: transform 0.2s, box-shadow 0.2s; text-decoration: none;
+}
+.nav-cta:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(232,137,29,0.4); color: #fff; text-decoration: none; }
+
+@media (max-width: 768px) {
+  .nav-links { display: none; }
+  .nav-cta { display: none; }
+}
+
+/* ===== ARTICLE ===== */
+.article-header {
+  padding: 140px 24px 60px;
+  text-align: center;
+  position: relative;
+}
+.article-header::before {
+  content: ''; position: absolute; inset: 0;
+  background: radial-gradient(ellipse at 50% 0%, rgba(232,137,29,0.1) 0%, transparent 60%);
+  pointer-events: none;
+}
+.article-label {
+  font-size: 13px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase;
+  color: #E8891D; margin-bottom: 16px; position: relative;
+}
+.article-header h1 {
+  font-size: clamp(32px, 5vw, 52px); font-weight: 900; line-height: 1.1;
+  max-width: 720px; margin: 0 auto 20px; position: relative;
+}
+.article-subtitle {
+  font-size: 18px; color: #8a8a9a; max-width: 560px; margin: 0 auto;
+  line-height: 1.7; font-style: italic; position: relative;
+}
+
+.article-body {
+  max-width: 680px; margin: 0 auto; padding: 0 24px 100px;
+}
+.article-body h2 {
+  font-size: 28px; font-weight: 800; margin: 56px 0 20px;
+  color: #fff; line-height: 1.2;
+}
+.article-body p {
+  font-size: 17px; color: #c0c0d0; line-height: 1.8; margin-bottom: 20px;
+}
+.article-body strong { color: #fff; }
+.article-body blockquote {
+  border-left: 3px solid #E8891D;
+  padding: 16px 24px; margin: 32px 0;
+  background: rgba(232,137,29,0.06);
+  border-radius: 0 12px 12px 0;
+}
+.article-body blockquote p {
+  font-size: 18px; color: #e0e0e8; font-style: italic; margin-bottom: 0;
+}
+
+/* ===== CTA SECTION ===== */
+.blog-cta {
+  text-align: center; padding: 60px 24px 80px;
+  border-top: 1px solid rgba(255,255,255,0.06);
+  max-width: 680px; margin: 0 auto;
+}
+.blog-cta h2 {
+  font-size: 32px; font-weight: 800; margin-bottom: 16px;
+}
+.blog-cta p {
+  font-size: 17px; color: #8a8a9a; margin-bottom: 32px; line-height: 1.7;
+}
+.btn-primary {
+  display: inline-flex; align-items: center; gap: 10px;
+  padding: 16px 36px; background: #E8891D; color: #fff;
+  font-size: 16px; font-weight: 700; border-radius: 14px;
+  transition: transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 12px 36px rgba(232,137,29,0.3);
+  text-decoration: none;
+}
+.btn-primary:hover { transform: translateY(-3px); box-shadow: 0 18px 48px rgba(232,137,29,0.4); color: #fff; text-decoration: none; }
+.price-note {
+  font-size: 14px; color: #8a8a9a; margin-top: 16px; font-style: italic;
+}
+
+/* ===== FOOTER ===== */
+footer {
+  background: #0a0a0f; border-top: 1px solid rgba(255,255,255,0.06);
+  padding: 40px 0;
+}
+.footer-inner {
+  max-width: 1100px; margin: 0 auto; padding: 0 24px;
+  display: flex; justify-content: space-between; align-items: center;
+  flex-wrap: wrap; gap: 16px;
+}
+.footer-inner p { font-size: 13px; color: #555; }
+.footer-inner a { font-size: 13px; color: #8a8a9a; text-decoration: none; }
+.footer-inner a:hover { color: #fff; text-decoration: none; }
+.footer-links { display: flex; gap: 24px; }
+
+@media (max-width: 600px) {
+  .footer-inner { flex-direction: column; text-align: center; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a href="/" class="nav-brand">
+      <img src="icon.png" alt="Stackrep"> Stackrep
+    </a>
+    <ul class="nav-links">
+      <li><a href="/#features">Features</a></li>
+      <li><a href="/#how">How It Works</a></li>
+      <li><a href="/#pricing">Pricing</a></li>
+    </ul>
+    <a href="https://apps.apple.com/app/stackrep-fitness/idXXXXXXXXXX" class="nav-cta">Download Free</a>
+  </div>
+</nav>
+
+<!-- ARTICLE HEADER -->
+<header class="article-header">
+  <div class="article-label">Our Story</div>
+  <h1>How Stackrep Was Born: From a Notebook to an App</h1>
+  <p class="article-subtitle">I didn't build Stackrep because I wanted to make a fitness app. I built it because I needed one that didn't exist.</p>
+</header>
+
+<!-- ARTICLE BODY -->
+<article class="article-body">
+
+  <h2>The College Years: Plenty of Time, No Excuses</h2>
+  <p>In my college years, I was active. Not elite-athlete active — just a regular guy who enjoyed moving. I ran consistently, sometimes hitting 1,000 km a year. I went to the gym 3–4 times a week. I experimented with bodyweight workouts at home. None of it was serious, but it was regular. And that's what mattered.</p>
+  <p>Back then, I had the one thing that made it all easy: <strong>time.</strong> I was single, my schedule was my own, and fitting in an hour at the gym was never a problem.</p>
+
+  <h2>Then Life Changed</h2>
+  <p>When my first child was born, the gym was the first thing to go — honestly, I'd already stopped going before starting a family. But running still worked. I could lace up my shoes, head out for 40–60 minutes, and that was my fitness for the day.</p>
+  <p>Then my second child arrived, and everything got tighter. Time became the scarcest resource in my life. I could still squeeze in a run early in the morning or late at night, but even that was getting harder. The trend line was clear: my activity was going down, and I didn't have an easy fix.</p>
+  <p>The problem wasn't motivation. I wanted to move. The problem was that every form of exercise I knew required a block of time — 40 minutes minimum just for a run, once you factor in getting ready and the run itself. And I simply didn't have those blocks anymore.</p>
+
+  <h2>The Interview That Changed Everything</h2>
+  <p>Then I came across an <a href="https://www.youtube.com/watch?v=ifF85u3X-jQ" target="_blank" rel="noopener">interview with Mark Sisson</a>, and one idea stuck with me: <strong>micro workouts.</strong> The concept is simple — your training doesn't have to be a single, unbroken workout. You can split it into small bursts throughout the day and get the same benefit.</p>
+  <p>That was the lightbulb moment.</p>
+  <p>I thought: what if I set up a handful of exercises — push-ups, squats, pull-ups, whatever — and just did one set whenever I had two minutes? Between meetings. While waiting for the kettle. Before the kids wake up. After putting them to bed. That's the micro workout approach — and it fits perfectly into a busy life.</p>
+
+  <h2>The Notebook System</h2>
+  <p>I picked 8 exercises, 4 sets each, spread across the day. Nothing fancy. Just enough to move every major muscle group.</p>
+  <p>I grabbed a notebook and started tracking. Every time I completed a set, I'd mark it down. At the end of the week, I'd add up the numbers. At the end of the month, I'd see the bigger picture.</p>
+  <p>It worked. Really well, actually.</p>
+  <p>I kept this system going for almost two years. The notebook filled up with tally marks. I was moving my whole body daily, gaining some muscle, and staying active — all without ever needing a gym or a dedicated workout hour.</p>
+
+  <h2>From Notebook to App</h2>
+  <p>After a while, I started wondering: which exercises am I doing more? Which ones am I neglecting? I wanted to balance things out but I couldn't easily see the patterns in a notebook full of tally marks.</p>
+  <p>My first thought was to build an Excel spreadsheet. But then I thought — why not build an app? I'm a developer, and this would solve my exact problem.</p>
+  <p>So I built Stackrep. For myself. Just a simple tool to tap when I finish a set and see my progress across exercises, days, and weeks.</p>
+
+  <h2>Why I Made It Public</h2>
+  <p>After using my own app for a while, something clicked: <strong>I can't be the only person with this problem.</strong></p>
+  <p>There are millions of people — parents, office workers, busy professionals — who don't have time for a 60-minute gym session but can absolutely find 2 minutes here and there throughout the day. People who aren't trying to be elite athletes. People who just want to keep their body active and their muscles moving.</p>
+  <p>The fitness app market is full of complex trackers that want you to log every rep, every kilogram, every rest period, every meal. That's great for serious lifters. But for someone like me? I just need to know: <strong>did I move today?</strong></p>
+  <p>That's why I turned Stackrep into a real app. One tap per set. A progress ring that fills up. A calendar that shows your consistency over time. Nothing more, nothing less.</p>
+
+  <h2>What Fitness Means to Me Now</h2>
+  <p>These days, my approach to fitness is completely different from my college years — and honestly, I think it's better.</p>
+  <p>I don't run anymore. I walk instead, because while walking I can listen to audiobooks. Two birds, one stone. It's all about how best to utilise my time.</p>
+  <p>I'm not chasing personal records or six-pack abs. My goal is simple: <strong>keep my body active.</strong> Working an office job means sitting for hours. My 8 exercises spread throughout the day are my antidote to that. They keep my whole body moving, maintain some muscle, and take almost no time out of my day.</p>
+  <p>For me, fitness isn't about being extreme. It's about being consistent. And Stackrep is the tool that keeps me honest.</p>
+
+</article>
+
+<!-- CTA -->
+<section class="blog-cta">
+  <h2>Try It Yourself</h2>
+  <p>If any of this sounds familiar — if you're someone who wants to stay active but can't carve out a full hour — Stackrep might be for you. Set your exercises. Tap your sets throughout the day. Watch your consistency build over weeks and months.</p>
+  <a href="https://apps.apple.com/app/stackrep-fitness/idXXXXXXXXXX" class="btn-primary">
+    <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+    Download Free for 60 Days
+  </a>
+  <p class="price-note">No subscriptions. Just $1.99, once, forever.</p>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <p>&copy; 2026 Stackrep Fitness. All rights reserved.</p>
+    <div class="footer-links">
+      <a href="/">Home</a>
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="mailto:gyepesarpi@gmail.com">Contact</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
