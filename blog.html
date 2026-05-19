@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XWR58ZESZ8"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-XWR58ZESZ8');
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blog — Stackrep Fitness</title>
+<meta name="description" content="Stories and ideas behind Stackrep Fitness — the habit tracker built for real life.">
+<meta property="og:title" content="Blog — Stackrep Fitness">
+<meta property="og:description" content="Stories and ideas behind Stackrep Fitness — the habit tracker built for real life.">
+<meta property="og:image" content="https://stackrep.fit/app-screenshot.png">
+<meta property="og:url" content="https://stackrep.fit/blog.html">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Blog — Stackrep Fitness">
+<meta name="twitter:description" content="Stories and ideas behind Stackrep Fitness — the habit tracker built for real life.">
+<meta name="twitter:image" content="https://stackrep.fit/app-screenshot.png">
+<link rel="icon" type="image/png" href="icon.png">
+<link rel="apple-touch-icon" href="icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+/* ===== RESET & BASE ===== */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  background: #0a0a0f;
+  color: #ffffff;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+a { color: inherit; text-decoration: none; }
+img { max-width: 100%; display: block; }
+
+/* ===== NAV ===== */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  background: rgba(10,10,15,0.85); backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+.nav-inner {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 16px 24px; max-width: 1100px; margin: 0 auto;
+}
+.nav-brand {
+  display: flex; align-items: center; gap: 12px;
+  font-size: 20px; font-weight: 800; color: #fff;
+}
+.nav-brand img { width: 36px; height: 36px; border-radius: 8px; }
+.nav-links { display: flex; gap: 32px; list-style: none; }
+.nav-links a {
+  font-size: 14px; font-weight: 500; color: #8a8a9a;
+  transition: color 0.2s;
+}
+.nav-links a:hover { color: #fff; }
+.nav-cta {
+  padding: 10px 24px; background: #E8891D; color: #fff;
+  font-size: 14px; font-weight: 600; border-radius: 10px;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.nav-cta:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(232,137,29,0.4); }
+
+@media (max-width: 768px) {
+  .nav-links { display: none; }
+  .nav-cta { display: none; }
+}
+
+/* ===== PAGE HEADER ===== */
+.page-header {
+  padding: 140px 24px 60px;
+  text-align: center;
+  position: relative;
+}
+.page-header::before {
+  content: ''; position: absolute; inset: 0;
+  background: radial-gradient(ellipse at 50% 0%, rgba(232,137,29,0.1) 0%, transparent 60%);
+  pointer-events: none;
+}
+.page-label {
+  font-size: 13px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase;
+  color: #E8891D; margin-bottom: 16px; position: relative;
+}
+.page-header h1 {
+  font-size: clamp(36px, 5vw, 56px); font-weight: 900; line-height: 1.1;
+  max-width: 720px; margin: 0 auto 20px; position: relative;
+}
+.page-subtitle {
+  font-size: 18px; color: #8a8a9a; max-width: 560px; margin: 0 auto;
+  line-height: 1.7; position: relative;
+}
+
+/* ===== BLOG GRID ===== */
+.blog-grid {
+  max-width: 1100px; margin: 0 auto;
+  padding: 20px 24px 100px;
+  display: grid; grid-template-columns: repeat(2, 1fr); gap: 28px;
+}
+.post-card {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 20px;
+  padding: 32px;
+  display: flex; flex-direction: column; gap: 14px;
+  transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
+}
+.post-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(232,137,29,0.3);
+  box-shadow: 0 20px 50px rgba(232,137,29,0.08);
+}
+.post-label {
+  font-size: 12px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase;
+  color: #E8891D;
+}
+.post-card h2 {
+  font-size: 22px; font-weight: 800; line-height: 1.25; color: #fff;
+}
+.post-card p {
+  font-size: 15px; color: #8a8a9a; line-height: 1.7;
+}
+.read-more {
+  margin-top: auto; font-size: 14px; font-weight: 600; color: #E8891D;
+}
+
+@media (max-width: 768px) {
+  .blog-grid { grid-template-columns: 1fr; }
+}
+
+/* ===== FOOTER ===== */
+footer {
+  background: #0a0a0f; border-top: 1px solid rgba(255,255,255,0.06);
+  padding: 40px 0;
+}
+.footer-inner {
+  max-width: 1100px; margin: 0 auto; padding: 0 24px;
+  display: flex; justify-content: space-between; align-items: center;
+  flex-wrap: wrap; gap: 16px;
+}
+.footer-inner p { font-size: 13px; color: #555; }
+.footer-inner a { font-size: 13px; color: #8a8a9a; }
+.footer-inner a:hover { color: #fff; }
+.footer-links { display: flex; gap: 24px; }
+
+@media (max-width: 600px) {
+  .footer-inner { flex-direction: column; text-align: center; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a href="/" class="nav-brand">
+      <img src="icon.png" alt="Stackrep"> Stackrep
+    </a>
+    <ul class="nav-links">
+      <li><a href="/#features">Features</a></li>
+      <li><a href="/#how">How It Works</a></li>
+      <li><a href="blog.html">Blog</a></li>
+      <li><a href="/#pricing">Pricing</a></li>
+    </ul>
+    <a href="https://apps.apple.com/app/stackrep-fitness/id6759266222" class="nav-cta">Download Free</a>
+  </div>
+</nav>
+
+<!-- HEADER -->
+<header class="page-header">
+  <div class="page-label">Blog</div>
+  <h1>The Stackrep Blog</h1>
+  <p class="page-subtitle">Stories and ideas behind a fitness habit built for real life.</p>
+</header>
+
+<!-- POSTS -->
+<section class="blog-grid">
+  <a href="blog-how-stackrep-was-born.html" class="post-card">
+    <div class="post-label">Our Story</div>
+    <h2>How Stackrep Was Born: From a Notebook to an App</h2>
+    <p>I didn't build Stackrep because I wanted to make a fitness app. I built it because I needed one that didn't exist. Here's the story.</p>
+    <span class="read-more">Read more →</span>
+  </a>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <p>&copy; 2026 Stackrep Fitness. All rights reserved.</p>
+    <div class="footer-links">
+      <a href="/">Home</a>
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="mailto:gyepesarpi@gmail.com">Contact</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
