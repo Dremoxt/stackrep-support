@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Stackrep Fitness FAQ — Micro Workouts, Set Tracking & Habit Building</title>
+<meta name="description" content="Got questions about Stackrep Fitness? Learn how micro workout tracking works, why resistance bands are key, how many sets per day is enough, and what makes this method stick.">
+<link rel="canonical" href="https://stackrep.fit/faq.html">
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-DR67H4Q4WS"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-DR67H4Q4WS');
+</script>
+
+<link rel="icon" type="image/png" href="icon.png">
+<link rel="apple-touch-icon" href="icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  background: #0a0a0f;
+  color: #ffffff;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+a { text-decoration: none; color: inherit; }
+img { max-width: 100%; display: block; }
+.container { max-width: 760px; margin: 0 auto; padding: 0 24px; }
+
+/* NAV */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  background: rgba(10,10,15,0.85); backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+.nav-inner {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 16px 24px; max-width: 1100px; margin: 0 auto;
+}
+.nav-brand {
+  display: flex; align-items: center; gap: 12px;
+  font-size: 20px; font-weight: 800;
+}
+.nav-brand img { width: 36px; height: 36px; border-radius: 8px; }
+.nav-links { display: flex; gap: 32px; list-style: none; }
+.nav-links a { font-size: 14px; font-weight: 500; color: #8a8a9a; transition: color 0.2s; }
+.nav-links a:hover { color: #fff; }
+.nav-links a.active { color: #fff; }
+@media (max-width: 768px) { .nav-links { display: none; } }
+
+/* FAQ */
+.faq-wrap { max-width: 760px; margin: 0 auto; padding: 120px 24px 80px; }
+.faq-header { text-align: center; margin-bottom: 56px; }
+.faq-header .eyebrow {
+  font-size: 13px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase;
+  color: #E8891D; margin-bottom: 12px;
+}
+.faq-header h1 { font-size: clamp(32px, 5vw, 44px); font-weight: 800; line-height: 1.15; margin-bottom: 14px; }
+.faq-header p { color: #8a8a9a; font-size: 17px; max-width: 540px; margin: 0 auto; }
+
+.faq-section { margin-bottom: 48px; }
+.faq-section > h2 {
+  font-size: 14px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase;
+  color: #E8891D; margin-bottom: 8px; padding-bottom: 12px;
+  border-bottom: 1px solid rgba(232,137,29,0.25);
+}
+
+details.faq { border-bottom: 1px solid rgba(255,255,255,0.08); }
+details.faq summary {
+  cursor: pointer; list-style: none; padding: 20px 0;
+  font-size: 17px; font-weight: 600; color: #fff;
+  display: flex; justify-content: space-between; align-items: center; gap: 20px;
+}
+details.faq summary::-webkit-details-marker { display: none; }
+details.faq summary::after {
+  content: '+'; color: #E8891D; font-size: 24px; font-weight: 400;
+  line-height: 1; flex-shrink: 0; transition: transform 0.2s;
+}
+details.faq[open] summary::after { content: '\2212'; }
+details.faq summary:hover { color: #E8891D; }
+.faq-answer { padding: 0 0 24px; color: #b0b0c0; font-size: 15.5px; line-height: 1.75; }
+.faq-answer p { margin-bottom: 14px; }
+.faq-answer p:last-child { margin-bottom: 0; }
+.faq-answer a { color: #E8891D; font-weight: 600; }
+.faq-answer ol, .faq-answer ul { margin: 8px 0 14px 22px; }
+.faq-answer li { margin-bottom: 8px; }
+.faq-answer strong { color: #fff; }
+
+/* CTA */
+.faq-cta {
+  margin-top: 8px; text-align: center;
+  background: rgba(232,137,29,0.08); border: 1px solid rgba(232,137,29,0.2);
+  border-radius: 18px; padding: 40px 28px;
+}
+.faq-cta h2 { font-size: 24px; font-weight: 800; margin-bottom: 10px; color: #fff; border: none; letter-spacing: normal; text-transform: none; padding: 0; }
+.faq-cta p { color: #8a8a9a; font-size: 15px; margin-bottom: 22px; }
+.btn-primary {
+  display: inline-flex; align-items: center; gap: 10px;
+  padding: 15px 34px; background: #E8891D; color: #fff;
+  font-size: 16px; font-weight: 700; border-radius: 12px;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 12px 30px rgba(232,137,29,0.35); }
+
+footer {
+  border-top: 1px solid rgba(255,255,255,0.06); padding: 40px 0; text-align: center;
+  color: #555; font-size: 13px; margin-top: 60px;
+}
+footer a { color: #8a8a9a; }
+</style>
+
+<!-- FAQ structured data for search engines -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type":"Question","name":"What is Stackrep Fitness?","acceptedAnswer":{"@type":"Answer","text":"Stackrep Fitness is an iOS app for tracking exercise sets throughout the day. You set a daily goal, tap once every time you complete a set, and watch your progress fill up. It's built for people who want to build a consistent daily movement habit — without a gym, a rigid program, or a monthly subscription. One-time purchase, $5.99. Free 60-day trial, no credit card required."}},
+    {"@type":"Question","name":"How does Stackrep work?","acceptedAnswer":{"@type":"Answer","text":"You create exercise categories (Push, Back, Biceps, Shoulders, Legs, Abs, Plank — or anything custom). You set a daily set goal per category and a total daily target. Every time you complete a set, you tap once. The app tracks your daily progress, shows a color-coded calendar, and calculates weekly and monthly averages so you can see patterns over time."}},
+    {"@type":"Question","name":"Is there a free trial?","acceptedAnswer":{"@type":"Answer","text":"Yes — 60 days, no credit card required. That's long enough to genuinely build a habit and decide whether the method works for you. If it doesn't, you've lost nothing."}},
+    {"@type":"Question","name":"How much does Stackrep cost?","acceptedAnswer":{"@type":"Answer","text":"$5.99, one time. No subscription, no renewal, no monthly charge. Every feature and all future updates are included in that single purchase."}},
+    {"@type":"Question","name":"Why a one-time purchase instead of a subscription?","acceptedAnswer":{"@type":"Answer","text":"Subscription apps charge you monthly whether you use them or not. They also tend to add features continuously — not because you asked for them, but to justify the recurring cost. Stackrep is designed to do one thing well: help you track sets and build a daily movement habit. There's no feature bloat, no upsell, and no bill at the end of the month."}},
+    {"@type":"Question","name":"Is Stackrep available on Android?","acceptedAnswer":{"@type":"Answer","text":"Stackrep is currently iOS only."}},
+    {"@type":"Question","name":"Where can I download Stackrep?","acceptedAnswer":{"@type":"Answer","text":"Stackrep is available on the App Store: https://apps.apple.com/app/stackrep-fitness/id6759266222"}},
+    {"@type":"Question","name":"What is a micro workout?","acceptedAnswer":{"@type":"Answer","text":"A micro workout is a set (or a few sets) completed in a spare moment throughout the day — while making coffee, mid-walk, before bed, during a TV show. The key insight, developed by fitness researcher Mark Sisson, is that the body doesn't check the clock. If you do a set, rest for three hours, then do another set — that is still training. The body responds to the work regardless of how much time passed between sets."}},
+    {"@type":"Question","name":"Is micro workout training actually effective for building muscle and strength?","acceptedAnswer":{"@type":"Answer","text":"Yes. Consistent, lower-intensity training accumulates real volume over time. The goal is muscle activation, not exhaustion. Over weeks and months, this consistent activation produces visible results. The founder reached 6–7 pull-ups as a byproduct of consistent band and bodyweight work — without ever training pull-ups directly."}},
+    {"@type":"Question","name":"How is this different from a normal workout routine?","acceptedAnswer":{"@type":"Answer","text":"Traditional workouts concentrate all your volume into one 45–60 minute block, a few days per week. The Stackrep method distributes volume across the entire day, every day. The total weekly volume can be equivalent to 4 full training days — it's just spread differently. The advantage: it fits into real life without requiring a dedicated time block."}},
+    {"@type":"Question","name":"How many sets per day is enough?","acceptedAnswer":{"@type":"Answer","text":"The app's default framework is 32 sets/day = 100% (4 sets across 8 exercise categories). In practice, a realistic sustainable monthly average is 55–60%, which is the volume equivalent of training 4 days per week traditionally. Even a 12% day — just 3–4 sets — keeps the habit alive and the muscle moving. There's no wrong number as long as you're consistent."}},
+    {"@type":"Question","name":"What if I only have a few minutes?","acceptedAnswer":{"@type":"Answer","text":"That's enough. One set takes about 90 seconds. Even on your most fragmented days, 3–4 sets fit into waiting, cooking, or winding down. The method is designed to fit inside existing life, not compete with it."}},
+    {"@type":"Question","name":"What if I miss a day — or a whole week?","acceptedAnswer":{"@type":"Answer","text":"Zero days happen. The founder takes 3–4 full zero days per month, usually during family travel, with no guilt. The habit resumes easily because the method never depleted you. You're not recovering from exhaustion — you're just resuming. The calendar will show a red day; that's fine. The goal is the monthly trend, not daily perfection."}},
+    {"@type":"Question","name":"Can I do this with a busy schedule and kids at home?","acceptedAnswer":{"@type":"Answer","text":"This was the exact problem Stackrep was built to solve. Structured workout blocks — 30-minute yoga sessions, gym visits — kept failing because they required uninterrupted time. Micro workouts don't compete with family life. They happen while making breakfast, during a walk with the kids, or after bedtime. The spare minutes were always there — hidden inside normal life."}},
+    {"@type":"Question","name":"Do I need a gym or special equipment?","acceptedAnswer":{"@type":"Answer","text":"No gym required. Bodyweight exercises (pushups, squats, plank) cover the foundation. Resistance bands extend coverage to the full body — including all pulling movements — without a gym, pull-up bar, or setup time."}},
+    {"@type":"Question","name":"Why resistance bands and not weights or a gym?","acceptedAnswer":{"@type":"Answer","text":"Resistance bands are the key tool in this method. Without them, micro sessions are limited to push and plank movements. Bands unlock all pulling movements — rows, face pulls, bicep curls, shoulder work, pull-aparts — anywhere: kitchen, living room, mid-walk outdoors. They loop on any door in seconds, require no setup time, and can be done in regular clothes. The founder uses them for 7 of 8 exercise categories."}},
+    {"@type":"Question","name":"What exercises work best for micro sessions?","acceptedAnswer":{"@type":"Answer","text":"Any exercise that can be done in about 90 seconds, anywhere, without changing clothes or needing recovery time. The Stackrep framework covers 8 categories: Push (bodyweight pushups and resistance band variations); Back (resistance band rows, face pulls, pull-aparts); Triceps (resistance band and light dumbbell exercises); Biceps (resistance band curls); Shoulders (resistance band lateral raises, overhead press); Legs (bodyweight squats, lunges, resistance band variations); Abs (bodyweight and light dumbbell exercises); Plank (bodyweight hold, 25 seconds = 1 set)."}},
+    {"@type":"Question","name":"Is this suitable for beginners?","acceptedAnswer":{"@type":"Answer","text":"Yes. There are no complex movements, no prescribed programs, and no performance benchmarks to hit. You set your own goals, choose your own exercises, and tap once per set. A beginner with 2–3 sets per day is using the app exactly as intended."}},
+    {"@type":"Question","name":"How does the app track progress throughout the day?","acceptedAnswer":{"@type":"Answer","text":"Because sets happen throughout the day across multiple locations, it's easy to lose count. The app keeps a running total in your pocket. Tap when you complete a set — anywhere, anytime — and your daily count stays accurate. At the end of the day you can see exactly where you landed relative to your goal."}},
+    {"@type":"Question","name":"What does the color-coded calendar show?","acceptedAnswer":{"@type":"Answer","text":"The calendar shows every day of the month color-coded: green (goal hit), yellow (partial progress), red (missed). It gives you an immediate visual of your consistency patterns — which days you're strong, which days you're slipping. The goal isn't perfection. A mostly green calendar with some yellows tells an honest, useful story."}},
+    {"@type":"Question","name":"Can I set different goals for different days of the week?","acceptedAnswer":{"@type":"Answer","text":"Yes. You can set a unique daily target for each day of the week. Lower on busy days, higher on free days. This is one of the most important features for maintaining consistency with an irregular schedule — it removes the all-or-nothing feeling on hard days."}},
+    {"@type":"Question","name":"What stats does the app show?","acceptedAnswer":{"@type":"Answer","text":"Daily progress toward your goal; weekly set totals; monthly averages; per-category averages (1, 3, 6, and 12-month views); a color-coded monthly calendar; and personal records per category. The 3-month per-category view is especially useful for spotting which muscle groups you're neglecting versus over-relying on."}},
+    {"@type":"Question","name":"What is the philosophy behind \"never depleting\"?","acceptedAnswer":{"@type":"Answer","text":"Traditional fitness culture glorifies exhaustion — \"leave it all in the gym.\" This approach makes the next session harder to start and harder to fit into a busy day. The Stackrep method flips this: you always leave something in the tank. You could always do one more set — you just don't need to. This keeps the habit psychologically and physically accessible every single day."}},
+    {"@type":"Question","name":"Why track by sets rather than calories, reps, or time?","acceptedAnswer":{"@type":"Answer","text":"Calorie tracking is outcome-focused and creates friction and anxiety for many people. Rep tracking requires remembering weights and progression. Time-based tracking ignores intensity. Set tracking is behavior-focused — it answers the simplest, most important question: did I do something today? One tap per set captures the habit with nearly zero cognitive overhead."}},
+    {"@type":"Question","name":"Who built Stackrep and why?","acceptedAnswer":{"@type":"Answer","text":"Stackrep was built by a 44-year-old father with a demanding schedule who couldn't maintain any traditional fitness routine. After fixing recurring neck and back pain through targeted muscle activation, he developed a method of doing sets throughout the day using bodyweight and resistance bands. He built the app because he needed a simple way to track sets across a full day — and nothing else on the market did exactly that."}}
+  ]
+}
+</script>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="/" class="nav-brand">
+      <img src="icon.png" alt="Stackrep"> Stackrep
+    </a>
+    <ul class="nav-links">
+      <li><a href="/#features">Features</a></li>
+      <li><a href="/#how">How It Works</a></li>
+      <li><a href="blog.html">Blog</a></li>
+      <li><a href="faq.html" class="active">FAQ</a></li>
+      <li><a href="/#pricing">Pricing</a></li>
+    </ul>
+  </div>
+</nav>
+
+<main class="faq-wrap">
+  <div class="faq-header">
+    <div class="eyebrow">Help Center</div>
+    <h1>Frequently Asked Questions</h1>
+    <p>Everything about how Stackrep works, the micro-workout method behind it, the gear you need, and the philosophy that keeps it sustainable.</p>
+  </div>
+
+  <!-- SECTION 1 -->
+  <section class="faq-section">
+    <h2>About the App</h2>
+
+    <details class="faq">
+      <summary>What is Stackrep Fitness?</summary>
+      <div class="faq-answer">
+        <p>Stackrep Fitness is an iOS app for tracking exercise sets throughout the day. You set a daily goal, tap once every time you complete a set, and watch your progress fill up. It's built for people who want to build a consistent daily movement habit — without a gym, a rigid program, or a monthly subscription. One-time purchase, $5.99. Free 60-day trial, no credit card required.</p>
+      </div>
+    </details>
+
+    <details class="faq">
+      <summary>How does Stackrep work?</summary>
+      <div class="faq-answer">
+        <p>You create exercise categories (Push, Back, Biceps, Shoulders, Legs, Abs, Plank — or anything custom). You set a daily set goal per category and a total daily target. Every time you complete a set, you tap once. The app tracks your daily progress, shows a color-coded calendar, and calculates weekly and monthly averages so you can see patterns over time.</p>
+      </div>
+    </details>
+
+    <details class="faq">
+      <summary>Is there a free trial?</summary>
+      <div class="faq-answer">
+        <p>Yes — 60 days, no credit card required. That's long enough to genuinely build a habit and decide whether the method works for you. If it doesn't, you've lost nothing.</p>
+      </div>
+    </details>
+
+    <details class="faq">
+      <summary>How much does Stackrep cost?</summary>
+      <div class="faq-answer">
+        <p>$5.99, one time. No subscription, no renewal, no monthly charge. Every feature and all future updates are included in that single purchase.</p>
+      </div>
+    </details>
+
+    <details class="faq">
+      <summary>Why a one-time purchase instead of a subscription?</summary>
+      <div class="faq-answer">
+        <p>Subscription apps charge you monthly whether you use them or not. They also tend to add features continuously — not because you asked for them, but to justify the recurring cost. Stackrep is designed to do one thing well: help you track sets and build a daily movement habit. There's no feature bloat, no upsell, and no bill at the end of the month.</p>
+      </div>
+    </details>
+
+    <details class="faq">
+      <summary>Is Stackrep available on Android?</summary>
+      <div class="faq-answer">
+        <p>Stackrep is currently iOS only.</p>
+      </div>
+    </details>
+
+    <details class="faq">
+      <summary>Where can I download Stackrep?</summary>
+      <div class="faq-answer">
+        <p><a href="https://apps.apple.com/app/stackrep-fitness/id6759266222">Download on the App Store →</a></p>
+      </div>
+    </details>
+  </section>
+
+  <!-- SECTION 2 -->
+  <section class="faq-section">
+    <h2>The Method</h2>
+
+    <details class="faq">
+      <summary>What is a micro workout?</summary>
+      <div class="faq-answer">
+        <p>A micro workout is a set (or a few sets) completed in a spare moment throughout the day — while making coffee, mid-walk, before bed, during a TV show. The key insight, developed by fitness researcher Mark Sisson, is that the body doesn't check the clock. If you do a set, rest for three hours, then do another set — that is still training. The body responds to the work regardless of how much time passed between sets. This reframes scattered sets throughout the day from "not a real workout" into a legitimate training method.</p>
+      </div>
+    </details>
+
+    <details class="faq">
+      <summary>Is micro workout training actually effective for building muscle and strength?</summary>
+      <div class="faq-answer">
+        <p>Yes. Consistent, lower-intensity training accumulates real volume over time. The goal is muscle activation, not exhaustion. Over weeks and months, this consistent activation produces visible results. The founder reached 6–7 pull-ups as a byproduct of consistent band and bodyweight work — without ever training pull-ups directly.</p>
+      </div>
+    </details>
+
+    <details class="faq">
+      <summary>How is this different from a normal workout routine?</summary>
+      <div class="faq-answer">
+        <p>Traditional workouts concentrate all your volume into one 45–60 minute block, a few days per week. The Stackrep method distributes volume across the entire day, every day. The total weekly volume can be equivalent to 4 full training days — it's just spread differently. The advantage: it fits into real life without requiring a dedicated time block.</p>
+      </div>
+    </details>
+
+    <details class="faq">
+      <summary>How many sets per day is enough?</summary>
+      <div class="faq-answer">
+        <p>The app's default framework is 32 sets/day = 100% (4 sets across 8 exercise categories). In practice, a realistic sustainable monthly average is 55–60%, which is the volume equivalent of training 4 days per week traditionally. Even a 12% day — just 3–4 sets — keeps the habit alive and the muscle moving. There's no wrong number as long as you're consistent.</p>
+      </div>
+    </details>
+
+    <details class="faq">
+      <summary>What if I only have a few minutes?</summary>
+      <div class="faq-answer">
+        <p>That's enough. One set takes about 90 seconds. Even on your most fragmented days, 3–4 sets fit into waiting, cooking, or winding down. The method is designed to fit <em>inside</em> existing life, not compete with it.</p>
+      </div>
+    </details>
+
+    <details class="faq">
+      <summary>What if I miss a day — or a whole week?</summary>
+      <div class="faq-answer">
+        <p>Zero days happen. The founder takes 3–4 full zero days per month, usually during family travel, with no guilt. The habit resumes easily because the method never depleted you. You're not recovering from exhaustion — you're just resuming. The calendar will show a red day; that's fine. The goal is the monthly trend, not daily perfection.</p>
+      </div>
+    </details>
+
+    <details class="faq">
+      <summary>Can I do this with a busy schedule and kids at home?</summary>
+      <div class="faq-answer">
+        <p>This was the exact problem Stackrep was built to solve. Structured workout blocks — 30-minute yoga sessions, gym visits — kept failing because they required uninterrupted time. Micro workouts don't compete with family life. They happen while making breakfast, during a walk with the kids, or after bedtime. The spare minutes were always there — hidden inside normal life.</p>
+      </div>
+    </details>
+  </section>
+
+  <!-- SECTION 3 -->
+  <section class="faq-section">
+    <h2>Equipment &amp; Exercises</h2>
+
+    <details class="faq">
+      <summary>Do I need a gym or special equipment?</summary>
+      <div class="faq-answer">
+        <p>No gym required. Bodyweight exercises (pushups, squats, plank) cover the foundation. Resistance bands extend coverage to the full body — including all pulling movements — without a gym, pull-up bar, or setup time.</p>
+      </div>
+    </details>
+
+    <details class="faq">
+      <summary>Why resistance bands and not weights or a gym?</summary>
+      <div class="faq-answer">
+        <p>Resistance bands are the key tool in this method. Without them, micro sessions are limited to push and plank movements. Bands unlock all pulling movements — rows, face pulls, bicep curls, shoulder work, pull-aparts — anywhere: kitchen, living room, mid-walk outdoors. They loop on any door in seconds, require no setup time, and can be done in regular clothes. The founder uses them for 7 of 8 exercise categories.</p>
+      </div>
+    </details>
+
+    <details class="faq">
+      <summary>What exercises work best for micro sessions?</summary>
+      <div class="faq-answer">
+        <p>Any exercise that can be done in about 90 seconds, anywhere, without changing clothes or needing recovery time. The Stackrep framework covers 8 categories:</p>
+        <ol>
+          <li><strong>Push</strong> — bodyweight pushups and resistance band variations</li>
+          <li><strong>Back</strong> — resistance band rows, face pulls, pull-aparts</li>
+          <li><strong>Triceps</strong> — resistance band and light dumbbell exercises</li>
+          <li><strong>Biceps</strong> — resistance band curls</li>
+          <li><strong>Shoulders</strong> — resistance band lateral raises, overhead press</li>
+          <li><strong>Legs</strong> — bodyweight squats, lunges, resistance band variations</li>
+          <li><strong>Abs</strong> — bodyweight and light dumbbell exercises</li>
+          <li><strong>Plank</strong> — bodyweight hold (25 seconds = 1 set)</li>
+        </ol>
+      </div>
+    </details>
+
+    <details class="faq">
+      <summary>Is this suitable for beginners?</summary>
+      <div class="faq-answer">
+        <p>Yes. There are no complex movements, no prescribed programs, and no performance benchmarks to hit. You set your own goals, choose your own exercises, and tap once per set. A beginner with 2–3 sets per day is using the app exactly as intended.</p>
+      </div>
+    </details>
+  </section>
+
+  <!-- SECTION 4 -->
+  <section class="faq-section">
+    <h2>Tracking &amp; Progress</h2>
+
+    <details class="faq">
+      <summary>How does the app track progress throughout the day?</summary>
+      <div class="faq-answer">
+        <p>Because sets happen throughout the day across multiple locations, it's easy to lose count. The app keeps a running total in your pocket. Tap when you complete a set — anywhere, anytime — and your daily count stays accurate. At the end of the day you can see exactly where you landed relative to your goal.</p>
+      </div>
+    </details>
+
+    <details class="faq">
+      <summary>What does the color-coded calendar show?</summary>
+      <div class="faq-answer">
+        <p>The calendar shows every day of the month color-coded: green (goal hit), yellow (partial progress), red (missed). It gives you an immediate visual of your consistency patterns — which days you're strong, which days you're slipping. The goal isn't perfection. A mostly green calendar with some yellows tells an honest, useful story.</p>
+      </div>
+    </details>
+
+    <details class="faq">
+      <summary>Can I set different goals for different days of the week?</summary>
+      <div class="faq-answer">
+        <p>Yes. You can set a unique daily target for each day of the week. Lower on busy days, higher on free days. This is one of the most important features for maintaining consistency with an irregular schedule — it removes the all-or-nothing feeling on hard days.</p>
+      </div>
+    </details>
+
+    <details class="faq">
+      <summary>What stats does the app show?</summary>
+      <div class="faq-answer">
+        <ul>
+          <li>Daily progress toward your goal</li>
+          <li>Weekly set totals</li>
+          <li>Monthly averages</li>
+          <li>Per-category averages (1, 3, 6, and 12-month views)</li>
+          <li>Color-coded monthly calendar</li>
+          <li>Personal records per category</li>
+        </ul>
+        <p>The 3-month per-category view is especially useful for spotting which muscle groups you're neglecting versus over-relying on.</p>
+      </div>
+    </details>
+  </section>
+
+  <!-- SECTION 5 -->
+  <section class="faq-section">
+    <h2>Philosophy</h2>
+
+    <details class="faq">
+      <summary>What is the philosophy behind "never depleting"?</summary>
+      <div class="faq-answer">
+        <p>Traditional fitness culture glorifies exhaustion — "leave it all in the gym." This approach makes the next session harder to start and harder to fit into a busy day. The Stackrep method flips this: you always leave something in the tank. You could always do one more set — you just don't need to. This keeps the habit psychologically and physically accessible every single day.</p>
+      </div>
+    </details>
+
+    <details class="faq">
+      <summary>Why track by sets rather than calories, reps, or time?</summary>
+      <div class="faq-answer">
+        <p>Calorie tracking is outcome-focused and creates friction and anxiety for many people. Rep tracking requires remembering weights and progression. Time-based tracking ignores intensity. Set tracking is behavior-focused — it answers the simplest, most important question: did I do something today? One tap per set captures the habit with nearly zero cognitive overhead.</p>
+      </div>
+    </details>
+
+    <details class="faq">
+      <summary>Who built Stackrep and why?</summary>
+      <div class="faq-answer">
+        <p>Stackrep was built by a 44-year-old father with a demanding schedule who couldn't maintain any traditional fitness routine. After fixing recurring neck and back pain through targeted muscle activation, he developed a method of doing sets throughout the day using bodyweight and resistance bands. He built the app because he needed a simple way to track sets across a full day — and nothing else on the market did exactly that.</p>
+      </div>
+    </details>
+  </section>
+
+  <div class="faq-cta">
+    <h2>Ready to stack your reps?</h2>
+    <p>Try every feature free for 60 days. No credit card required.</p>
+    <a class="btn-primary" href="https://apps.apple.com/app/stackrep-fitness/id6759266222">Download on the App Store →</a>
+  </div>
+</main>
+
+<footer>
+  <div class="container">
+    <p>&copy; 2026 Stackrep Fitness. All rights reserved. · <a href="/">Home</a> · <a href="privacy.html">Privacy Policy</a> · <a href="mailto:stackrep@proton.me">Contact</a></p>
+  </div>
+</footer>
+
+</body>
+</html>
