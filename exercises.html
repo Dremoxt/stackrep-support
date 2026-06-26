@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XWR58ZESZ8"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-XWR58ZESZ8');
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Exercises — Stackrep Fitness</title>
+  <meta name="description" content="Browse 32 bodyweight exercises and build your personalised micro-workout plan. Strength, flexibility, and posture — stacked your way.">
+  <meta property="og:title" content="Exercises — Stackrep Fitness">
+  <meta property="og:description" content="Browse 32 bodyweight exercises and build your personalised micro-workout plan.">
+  <meta property="og:image" content="https://stackrep.fit/app-screenshot.png">
+  <meta property="og:url" content="https://stackrep.fit/exercises.html">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Exercises — Stackrep Fitness">
+  <meta name="twitter:description" content="Browse 32 bodyweight exercises and build your personalised micro-workout plan.">
+  <meta name="twitter:image" content="https://stackrep.fit/app-screenshot.png">
+  <link rel="icon" type="image/png" href="icon.png">
+  <link rel="apple-touch-icon" href="icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="exercises.css">
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a href="/" class="nav-brand">
+      <img src="icon.png" alt="Stackrep"> Stackrep
+    </a>
+    <ul class="nav-links">
+      <li><a href="/#features">Features</a></li>
+      <li><a href="/#how">How It Works</a></li>
+      <li><a href="exercises.html" class="active">Exercises</a></li>
+      <li><a href="blog.html">Blog</a></li>
+      <li><a href="faq.html">FAQ</a></li>
+      <li><a href="/#pricing">Pricing</a></li>
+    </ul>
+    <a href="https://apps.apple.com/app/stackrep-fitness/id6759266222" class="nav-cta">Download Free</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-label">Move more. Consistently.</div>
+    <h1>Plan Your Exercises</h1>
+    <p class="hero-sub">Strength, flexibility, and posture — stacked your way.</p>
+    <div class="hero-ctas">
+      <button class="btn btn-primary" data-mode="browse">Browse exercises</button>
+      <button class="btn btn-secondary" data-mode="build">Build my plan</button>
+    </div>
+  </div>
+</section>
+
+<!-- MODE TABS -->
+<div class="container">
+  <div class="mode-tabs-wrap">
+    <div class="mode-tabs">
+      <button class="mode-tab active" data-tab="browse" onclick="switchMode('browse')">Browse</button>
+      <button class="mode-tab" data-tab="build" onclick="switchMode('build')">Build my plan</button>
+    </div>
+  </div>
+</div>
+
+<!-- BROWSE MODE -->
+<section id="browse-mode" class="container">
+  <div class="browse-top">
+    <div class="search-wrap">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+      </svg>
+      <input type="search" id="search" placeholder="Search exercises…" autocomplete="off" aria-label="Search exercises">
+    </div>
+    <button class="btn btn-secondary btn-sm filter-toggle-btn" id="filter-toggle-btn" aria-label="Open filters">
+      ⚙ Filters
+    </button>
+    <span class="result-count" id="result-count" aria-live="polite"></span>
+  </div>
+
+  <div class="browse-layout">
+    <aside class="filter-panel-desktop" id="filter-panel-desktop" aria-label="Filter exercises"></aside>
+    <div class="exercise-grid" id="exercise-grid" role="list"></div>
+  </div>
+</section>
+
+<!-- BUILD MODE -->
+<section id="build-mode" class="container hidden">
+  <div id="build-content"></div>
+</section>
+
+<!-- MOBILE FILTER SHEET -->
+<div class="filter-sheet-overlay" id="filter-sheet-overlay" aria-hidden="true"></div>
+<div class="filter-sheet" id="filter-sheet" role="dialog" aria-label="Filter exercises">
+  <div class="filter-sheet-handle"></div>
+  <div id="filter-panel-sheet"></div>
+  <div class="filter-sheet-actions">
+    <button class="btn btn-secondary" id="close-filter-sheet">Close</button>
+    <button class="btn btn-primary" id="apply-filters-btn">Apply</button>
+  </div>
+</div>
+
+<!-- EXERCISE DETAIL MODAL -->
+<div class="modal-overlay" id="modal-overlay" role="dialog" aria-modal="true" aria-label="Exercise detail">
+  <div class="modal" id="modal">
+    <div class="modal-header-wrap">
+      <div class="modal-thumb"></div>
+      <button class="modal-close" id="modal-close-btn" aria-label="Close">✕</button>
+    </div>
+    <div class="modal-body">
+      <h2 class="modal-title"></h2>
+      <div class="modal-tags"></div>
+      <div class="modal-section">
+        <div class="modal-section-label">Description</div>
+        <p id="modal-desc"></p>
+      </div>
+      <div class="modal-section">
+        <div class="modal-section-label">Why it's in Stackrep</div>
+        <p id="modal-rationale"></p>
+      </div>
+      <div class="modal-section">
+        <div class="modal-section-label">Coaching Cues</div>
+        <div class="cues-list" id="modal-cues"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <p>&copy; 2026 Stackrep Fitness. All rights reserved.</p>
+    <div class="footer-links">
+      <a href="/">Home</a>
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="mailto:gyepesarpi@gmail.com">Contact</a>
+    </div>
+  </div>
+</footer>
+
+<script src="exercises-data.js"></script>
+<script src="exercises.js"></script>
+</body>
+</html>
