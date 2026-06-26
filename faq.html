@@ -52,8 +52,14 @@ nav {
 .nav-links { display: flex; gap: 32px; list-style: none; }
 .nav-links a { font-size: 14px; font-weight: 500; color: #8a8a9a; transition: color 0.2s; }
 .nav-links a:hover { color: #fff; }
+.nav-cta {
+  padding: 10px 24px; background: #E8891D; color: #fff;
+  font-size: 14px; font-weight: 600; border-radius: 10px;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.nav-cta:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(232,137,29,0.4); }
 .nav-links a.active { color: #fff; }
-@media (max-width: 768px) { .nav-links { display: none; } }
+@media (max-width: 768px) { .nav-links { display: none; } .nav-cta { display: none; } }
 
 /* FAQ */
 .faq-wrap { max-width: 760px; margin: 0 auto; padding: 120px 24px 80px; }
@@ -164,6 +170,7 @@ footer a { color: #8a8a9a; }
       <li><a href="faq.html" class="active">FAQ</a></li>
       <li><a href="/#pricing">Pricing</a></li>
     </ul>
+    <a href="https://apps.apple.com/app/stackrep-fitness/id6759266222" class="nav-cta">Download Free</a>
   </div>
 </nav>
 
