@@ -1,0 +1,1143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Plan Your Exercises — StackRep Fitness</title>
+<meta name="description" content="Browse exercises and build a personalized workout plan. Filter by goal, muscle group, equipment, and more.">
+<link rel="icon" type="image/png" href="icon.png">
+<link rel="apple-touch-icon" href="icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+/* ===== RESET & BASE ===== */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  background: #0a0a0f;
+  color: #ffffff;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+a { text-decoration: none; color: inherit; }
+img { max-width: 100%; display: block; }
+button { font-family: inherit; }
+
+/* ===== NAV ===== */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  background: rgba(10,10,15,0.92); backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+.nav-inner {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 16px 24px; max-width: 1100px; margin: 0 auto;
+}
+.nav-brand {
+  display: flex; align-items: center; gap: 12px;
+  font-size: 20px; font-weight: 800;
+}
+.nav-brand img { width: 36px; height: 36px; border-radius: 8px; }
+.nav-links { display: flex; gap: 32px; list-style: none; }
+.nav-links a { font-size: 14px; font-weight: 500; color: #8a8a9a; transition: color 0.2s; }
+.nav-links a:hover, .nav-links a.active { color: #fff; }
+.nav-links a.active { color: #E8891D; }
+.nav-cta {
+  padding: 10px 24px; background: #E8891D; color: #fff;
+  font-size: 14px; font-weight: 600; border-radius: 10px;
+  transition: transform 0.2s, box-shadow 0.2s; border: none; cursor: pointer;
+}
+.nav-cta:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(232,137,29,0.4); }
+.nav-mobile { display: none; background: none; border: none; cursor: pointer; }
+.nav-mobile span { display: block; width: 24px; height: 2px; background: #fff; margin: 5px 0; }
+@media (max-width: 768px) {
+  .nav-links { display: none; }
+  .nav-cta { display: none; }
+  .nav-mobile { display: block; }
+  .nav-links.open {
+    display: flex; flex-direction: column; position: absolute;
+    top: 100%; left: 0; right: 0; background: rgba(10,10,15,0.98);
+    padding: 24px; gap: 20px; border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+}
+
+/* ===== PAGE HEADER ===== */
+.page-header {
+  padding: 100px 24px 48px;
+  max-width: 1100px; margin: 0 auto;
+  text-align: center;
+}
+.page-header .label {
+  font-size: 13px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase;
+  color: #E8891D; margin-bottom: 12px;
+}
+.page-header h1 {
+  font-size: clamp(32px, 5vw, 52px); font-weight: 900; line-height: 1.1;
+  margin-bottom: 16px;
+}
+.page-header p {
+  font-size: 17px; color: #8a8a9a; max-width: 520px; margin: 0 auto 32px;
+}
+
+/* ===== MODE TOGGLE ===== */
+.mode-toggle {
+  display: inline-flex; background: rgba(255,255,255,0.06);
+  border-radius: 14px; padding: 4px; gap: 4px; margin-bottom: 56px;
+}
+.mode-btn {
+  padding: 10px 28px; border-radius: 10px; border: none; cursor: pointer;
+  font-size: 14px; font-weight: 600; transition: all 0.2s;
+  color: #8a8a9a; background: transparent;
+}
+.mode-btn.active {
+  background: #E8891D; color: #fff;
+  box-shadow: 0 4px 16px rgba(232,137,29,0.3);
+}
+
+/* ===== LAYOUT ===== */
+.exercises-layout {
+  display: grid; grid-template-columns: 280px 1fr;
+  gap: 32px; max-width: 1100px; margin: 0 auto; padding: 0 24px 80px;
+}
+@media (max-width: 900px) {
+  .exercises-layout { grid-template-columns: 1fr; }
+}
+
+/* ===== FILTER PANEL ===== */
+.filter-panel {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 16px; padding: 24px; height: fit-content;
+  position: sticky; top: 80px;
+}
+.filter-panel h2 { font-size: 15px; font-weight: 700; margin-bottom: 20px; }
+.filter-section { margin-bottom: 24px; }
+.filter-section-title {
+  font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px;
+  color: #8a8a9a; margin-bottom: 10px;
+}
+.filter-chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.chip {
+  padding: 6px 14px; border-radius: 50px; border: 1px solid rgba(255,255,255,0.12);
+  background: transparent; color: #8a8a9a; font-size: 13px; font-weight: 500;
+  cursor: pointer; transition: all 0.2s;
+}
+.chip:hover { border-color: rgba(232,137,29,0.4); color: #E8891D; }
+.chip.selected {
+  background: rgba(232,137,29,0.15); border-color: rgba(232,137,29,0.5);
+  color: #E8891D;
+}
+.search-box {
+  width: 100%; background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.1); border-radius: 10px;
+  padding: 10px 14px; color: #fff; font-size: 14px; margin-bottom: 20px;
+  outline: none; transition: border-color 0.2s;
+}
+.search-box::placeholder { color: #555; }
+.search-box:focus { border-color: rgba(232,137,29,0.4); }
+.clear-btn {
+  display: block; width: 100%; padding: 10px; border-radius: 10px;
+  border: 1px solid rgba(255,255,255,0.1); background: transparent;
+  color: #8a8a9a; font-size: 13px; font-weight: 500; cursor: pointer;
+  transition: all 0.2s; margin-top: 8px;
+}
+.clear-btn:hover { border-color: rgba(255,255,255,0.2); color: #fff; }
+
+/* Mobile filter toggle */
+.mobile-filter-toggle {
+  display: none; width: 100%; padding: 14px; border-radius: 12px;
+  border: 1px solid rgba(255,255,255,0.12); background: rgba(255,255,255,0.04);
+  color: #fff; font-size: 14px; font-weight: 600; cursor: pointer;
+  margin-bottom: 16px; align-items: center; justify-content: space-between;
+}
+@media (max-width: 900px) {
+  .mobile-filter-toggle { display: flex; }
+  .filter-panel { position: static; display: none; }
+  .filter-panel.open { display: block; }
+}
+
+/* ===== RESULTS AREA ===== */
+.results-header {
+  display: flex; align-items: center; justify-content: space-between;
+  margin-bottom: 20px;
+}
+.result-count { font-size: 14px; color: #8a8a9a; font-weight: 500; }
+.result-count span { color: #fff; font-weight: 700; }
+
+/* ===== EXERCISE GRID ===== */
+.exercise-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 16px;
+}
+.exercise-card {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 16px; overflow: hidden; cursor: pointer;
+  transition: border-color 0.2s, transform 0.2s;
+}
+.exercise-card:hover {
+  border-color: rgba(232,137,29,0.3); transform: translateY(-2px);
+}
+.card-img {
+  height: 140px; background: rgba(255,255,255,0.05);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 40px;
+}
+.card-body { padding: 16px; }
+.card-name { font-size: 15px; font-weight: 700; margin-bottom: 10px; }
+.card-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+.tag {
+  padding: 3px 10px; border-radius: 50px;
+  font-size: 11px; font-weight: 600;
+  background: rgba(232,137,29,0.12); color: #E8891D;
+}
+.tag.blue { background: rgba(100,160,255,0.12); color: #64a0ff; }
+.tag.green { background: rgba(60,200,120,0.12); color: #3cc878; }
+
+/* Empty state */
+.empty-state {
+  text-align: center; padding: 60px 20px; color: #555;
+  grid-column: 1 / -1;
+}
+.empty-state p { font-size: 16px; margin-top: 12px; }
+
+/* ===== EXERCISE DETAIL MODAL ===== */
+.modal-overlay {
+  display: none; position: fixed; inset: 0; z-index: 200;
+  background: rgba(0,0,0,0.75); backdrop-filter: blur(6px);
+  align-items: center; justify-content: center; padding: 20px;
+}
+.modal-overlay.open { display: flex; }
+.modal {
+  background: #141418; border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 20px; padding: 32px; max-width: 560px; width: 100%;
+  max-height: 85vh; overflow-y: auto;
+}
+.modal-close {
+  float: right; background: rgba(255,255,255,0.08); border: none;
+  color: #fff; width: 32px; height: 32px; border-radius: 50%;
+  cursor: pointer; font-size: 18px; line-height: 32px; text-align: center;
+  margin-top: -4px;
+}
+.modal h2 { font-size: 22px; font-weight: 800; margin-bottom: 16px; }
+.modal-img {
+  height: 180px; background: rgba(255,255,255,0.05); border-radius: 12px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 64px; margin-bottom: 20px;
+}
+.modal-meta { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 20px; }
+.modal-section { margin-bottom: 18px; }
+.modal-section-title { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: #8a8a9a; margin-bottom: 6px; }
+.modal-section p { font-size: 15px; color: #ccc; }
+.cue-list { display: flex; flex-wrap: wrap; gap: 8px; }
+.cue { padding: 5px 12px; background: rgba(255,255,255,0.06); border-radius: 8px; font-size: 13px; }
+.rationale-box {
+  background: rgba(232,137,29,0.08); border-left: 3px solid #E8891D;
+  border-radius: 0 10px 10px 0; padding: 14px 16px;
+  font-size: 14px; color: #ccc; font-style: italic;
+}
+
+/* ===== PLAN BUILDER ===== */
+#planMode { display: none; max-width: 1100px; margin: 0 auto; padding: 0 24px 80px; }
+#planMode.active { display: block; }
+
+.plan-steps {
+  display: flex; gap: 8px; margin-bottom: 40px;
+  overflow-x: auto; padding-bottom: 4px;
+}
+.step-indicator {
+  display: flex; align-items: center; gap: 8px; flex-shrink: 0;
+}
+.step-dot {
+  width: 32px; height: 32px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 13px; font-weight: 700; border: 2px solid rgba(255,255,255,0.15);
+  color: #555; background: transparent; transition: all 0.3s;
+}
+.step-dot.active { background: #E8891D; border-color: #E8891D; color: #fff; }
+.step-dot.done { background: rgba(232,137,29,0.2); border-color: #E8891D; color: #E8891D; }
+.step-line { width: 24px; height: 2px; background: rgba(255,255,255,0.1); }
+.step-line.done { background: rgba(232,137,29,0.4); }
+
+.intake-card {
+  background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 20px; padding: 40px; max-width: 680px;
+}
+.intake-card h2 { font-size: 22px; font-weight: 800; margin-bottom: 8px; }
+.intake-card .sub { color: #8a8a9a; font-size: 15px; margin-bottom: 32px; }
+.multi-chips { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 32px; }
+.choice-chip {
+  padding: 10px 20px; border-radius: 50px; border: 1px solid rgba(255,255,255,0.12);
+  background: transparent; color: #8a8a9a; font-size: 14px; font-weight: 500;
+  cursor: pointer; transition: all 0.2s;
+}
+.choice-chip:hover { border-color: rgba(232,137,29,0.4); color: #E8891D; }
+.choice-chip.selected {
+  background: rgba(232,137,29,0.15); border-color: rgba(232,137,29,0.5); color: #E8891D;
+}
+
+.session-options { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 32px; }
+.session-option {
+  flex: 1; min-width: 100px; padding: 16px; border-radius: 14px;
+  border: 1px solid rgba(255,255,255,0.12); background: transparent;
+  cursor: pointer; text-align: center; transition: all 0.2s;
+}
+.session-option:hover { border-color: rgba(232,137,29,0.4); }
+.session-option.selected { background: rgba(232,137,29,0.1); border-color: rgba(232,137,29,0.5); }
+.session-option .min { font-size: 22px; font-weight: 800; color: #E8891D; }
+.session-option .label { font-size: 12px; color: #8a8a9a; font-weight: 500; }
+
+.level-options { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 32px; }
+.level-option {
+  flex: 1; min-width: 100px; padding: 16px; border-radius: 14px;
+  border: 1px solid rgba(255,255,255,0.12); background: transparent;
+  cursor: pointer; transition: all 0.2s;
+}
+.level-option:hover { border-color: rgba(232,137,29,0.4); }
+.level-option.selected { background: rgba(232,137,29,0.1); border-color: rgba(232,137,29,0.5); }
+.level-option .lv { font-size: 15px; font-weight: 700; }
+.level-option .desc { font-size: 12px; color: #8a8a9a; margin-top: 4px; }
+
+.intake-nav { display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+.btn-back {
+  padding: 12px 24px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.12);
+  background: transparent; color: #8a8a9a; font-size: 14px; font-weight: 600; cursor: pointer;
+  transition: all 0.2s;
+}
+.btn-back:hover { border-color: rgba(255,255,255,0.25); color: #fff; }
+.btn-next {
+  padding: 12px 28px; border-radius: 12px; border: none;
+  background: #E8891D; color: #fff; font-size: 14px; font-weight: 700; cursor: pointer;
+  transition: all 0.2s;
+}
+.btn-next:hover { box-shadow: 0 8px 24px rgba(232,137,29,0.4); transform: translateY(-1px); }
+.btn-next:disabled { opacity: 0.4; cursor: not-allowed; transform: none; box-shadow: none; }
+
+/* "Not sure" entry */
+.not-sure-box {
+  display: inline-flex; align-items: center; gap: 10px;
+  background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 12px; padding: 12px 18px; cursor: pointer;
+  font-size: 14px; color: #8a8a9a; transition: all 0.2s; margin-bottom: 24px;
+}
+.not-sure-box:hover { border-color: rgba(232,137,29,0.3); color: #E8891D; }
+
+/* ===== GENERATED PLAN ===== */
+#generatedPlan { display: none; max-width: 800px; margin: 0 auto; padding: 0 24px 80px; }
+#generatedPlan.active { display: block; }
+.plan-header { margin-bottom: 32px; }
+.plan-header h2 { font-size: 26px; font-weight: 800; margin-bottom: 8px; }
+.plan-header p { color: #8a8a9a; font-size: 15px; }
+.plan-actions { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 32px; }
+.plan-act-btn {
+  padding: 10px 20px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.12);
+  background: transparent; color: #8a8a9a; font-size: 13px; font-weight: 600;
+  cursor: pointer; transition: all 0.2s;
+}
+.plan-act-btn:hover { border-color: rgba(255,255,255,0.25); color: #fff; }
+.plan-act-btn.primary { background: #E8891D; border-color: #E8891D; color: #fff; }
+.plan-act-btn.primary:hover { box-shadow: 0 6px 20px rgba(232,137,29,0.35); }
+
+.phase-group { margin-bottom: 28px; }
+.phase-label {
+  font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px;
+  color: #8a8a9a; margin-bottom: 12px;
+  display: flex; align-items: center; gap: 8px;
+}
+.phase-label::after {
+  content: ''; flex: 1; height: 1px; background: rgba(255,255,255,0.08);
+}
+.plan-item {
+  display: flex; gap: 16px; align-items: flex-start;
+  background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 14px; padding: 18px; margin-bottom: 10px;
+  transition: border-color 0.2s;
+}
+.plan-item:hover { border-color: rgba(255,255,255,0.14); }
+.plan-item-icon {
+  width: 52px; height: 52px; border-radius: 12px;
+  background: rgba(255,255,255,0.06); display: flex; align-items: center;
+  justify-content: center; font-size: 22px; flex-shrink: 0;
+}
+.plan-item-info { flex: 1; }
+.plan-item-name { font-size: 15px; font-weight: 700; }
+.plan-item-meta { font-size: 13px; color: #8a8a9a; margin-top: 4px; }
+.plan-item-cues { font-size: 12px; color: #666; margin-top: 6px; }
+.plan-item-actions { display: flex; gap: 8px; align-items: center; }
+.plan-item-btn {
+  width: 30px; height: 30px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.1);
+  background: transparent; color: #8a8a9a; cursor: pointer; font-size: 14px;
+  transition: all 0.2s; display: flex; align-items: center; justify-content: center;
+}
+.plan-item-btn:hover { border-color: rgba(255,255,255,0.2); color: #fff; }
+.plan-item-btn.remove:hover { border-color: rgba(255,80,80,0.4); color: #ff5050; }
+
+.plan-total {
+  background: rgba(232,137,29,0.08); border: 1px solid rgba(232,137,29,0.2);
+  border-radius: 12px; padding: 16px 20px; margin-bottom: 24px;
+  font-size: 14px; color: #E8891D; font-weight: 600;
+}
+
+/* ===== PRINT ===== */
+@media print {
+  nav, .plan-actions, .plan-item-actions { display: none !important; }
+  body { background: #fff; color: #000; }
+  .plan-item { border-color: #eee; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="nav-brand">
+      <img src="icon.png" alt="StackRep">
+      <span>StackRep</span>
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html#features">Features</a></li>
+      <li><a href="index.html#how">How It Works</a></li>
+      <li><a href="exercises.html" class="active">Exercises</a></li>
+      <li><a href="index.html#pricing">Pricing</a></li>
+      <li><a href="faq.html">FAQ</a></li>
+    </ul>
+    <a href="index.html#pricing" class="nav-cta">Download Free</a>
+    <button class="nav-mobile" id="navToggle" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- PAGE HEADER -->
+<div class="page-header">
+  <div class="label">Exercise Library</div>
+  <h1>Plan Your <span style="color:#E8891D">Exercises</span></h1>
+  <p>Browse 12 exercises built around the StackRep philosophy — or let us build a personalized plan for you.</p>
+  <div class="mode-toggle">
+    <button class="mode-btn active" id="btnBrowse">Browse Exercises</button>
+    <button class="mode-btn" id="btnPlan">Build My Plan</button>
+  </div>
+</div>
+
+<!-- ===== BROWSE MODE ===== -->
+<div id="browseMode">
+  <!-- Mobile filter toggle -->
+  <div style="max-width:1100px;margin:0 auto;padding:0 24px 16px;">
+    <button class="mobile-filter-toggle" id="mobileFilterToggle">
+      <span>Filters</span>
+      <span id="mobileFilterIcon">▼</span>
+    </button>
+  </div>
+
+  <div class="exercises-layout">
+    <!-- FILTER PANEL -->
+    <aside class="filter-panel" id="filterPanel">
+      <h2>Filter Exercises</h2>
+
+      <input class="search-box" type="search" id="searchInput" placeholder="Search by name…">
+
+      <div class="filter-section">
+        <div class="filter-section-title">Goal</div>
+        <div class="filter-chips" id="goalFilters">
+          <button class="chip" data-filter="goal" data-value="Strength/Muscle">Strength</button>
+          <button class="chip" data-filter="goal" data-value="Flexibility">Flexibility</button>
+          <button class="chip" data-filter="goal" data-value="Posture">Posture</button>
+          <button class="chip" data-filter="goal" data-value="Mobility">Mobility</button>
+          <button class="chip" data-filter="goal" data-value="Balance">Balance</button>
+          <button class="chip" data-filter="goal" data-value="Cardio">Cardio</button>
+        </div>
+      </div>
+
+      <div class="filter-section" id="muscleSection">
+        <div class="filter-section-title">Muscle Group</div>
+        <div class="filter-chips">
+          <button class="chip" data-filter="muscleGroup" data-value="Chest">Chest</button>
+          <button class="chip" data-filter="muscleGroup" data-value="Back">Back</button>
+          <button class="chip" data-filter="muscleGroup" data-value="Shoulders">Shoulders</button>
+          <button class="chip" data-filter="muscleGroup" data-value="Arms">Arms</button>
+          <button class="chip" data-filter="muscleGroup" data-value="Core">Core</button>
+          <button class="chip" data-filter="muscleGroup" data-value="Glutes">Glutes</button>
+          <button class="chip" data-filter="muscleGroup" data-value="Legs">Legs</button>
+          <button class="chip" data-filter="muscleGroup" data-value="Full body">Full body</button>
+        </div>
+      </div>
+
+      <div class="filter-section" id="regionSection" style="display:none;">
+        <div class="filter-section-title">Region / Joint</div>
+        <div class="filter-chips">
+          <button class="chip" data-filter="region" data-value="Neck">Neck</button>
+          <button class="chip" data-filter="region" data-value="Shoulder">Shoulder</button>
+          <button class="chip" data-filter="region" data-value="Spine/Back">Spine/Back</button>
+          <button class="chip" data-filter="region" data-value="Hip">Hip</button>
+          <button class="chip" data-filter="region" data-value="Hamstring">Hamstring</button>
+          <button class="chip" data-filter="region" data-value="Groin/Adductor">Groin</button>
+          <button class="chip" data-filter="region" data-value="Knee">Knee</button>
+          <button class="chip" data-filter="region" data-value="Ankle">Ankle</button>
+          <button class="chip" data-filter="region" data-value="Wrist">Wrist</button>
+        </div>
+      </div>
+
+      <div class="filter-section">
+        <div class="filter-section-title">Equipment</div>
+        <div class="filter-chips">
+          <button class="chip" data-filter="equipment" data-value="Bodyweight">Bodyweight</button>
+          <button class="chip" data-filter="equipment" data-value="Resistance band">Band</button>
+          <button class="chip" data-filter="equipment" data-value="Dumbbell">Dumbbell</button>
+          <button class="chip" data-filter="equipment" data-value="Kettlebell">Kettlebell</button>
+          <button class="chip" data-filter="equipment" data-value="Barbell">Barbell</button>
+          <button class="chip" data-filter="equipment" data-value="Machine">Machine</button>
+        </div>
+      </div>
+
+      <div class="filter-section">
+        <div class="filter-section-title">Level</div>
+        <div class="filter-chips">
+          <button class="chip" data-filter="level" data-value="Beginner">Beginner</button>
+          <button class="chip" data-filter="level" data-value="Intermediate">Intermediate</button>
+          <button class="chip" data-filter="level" data-value="Advanced">Advanced</button>
+        </div>
+      </div>
+
+      <button class="clear-btn" id="clearFilters">Clear all filters</button>
+    </aside>
+
+    <!-- RESULTS -->
+    <main>
+      <div class="results-header">
+        <div class="result-count" id="resultCount"><span>12</span> exercises</div>
+      </div>
+      <div class="exercise-grid" id="exerciseGrid"></div>
+    </main>
+  </div>
+</div>
+
+<!-- ===== PLAN BUILDER MODE ===== -->
+<div id="planMode">
+  <!-- Step indicators -->
+  <div class="plan-steps" id="planSteps"></div>
+
+  <!-- Not sure entry -->
+  <div id="notSureBox">
+    <button class="not-sure-box" id="notSureBtn">✨ Not sure where to start? Answer 3 quick questions</button>
+  </div>
+
+  <!-- Intake steps (rendered by JS) -->
+  <div id="intakeContainer"></div>
+</div>
+
+<!-- ===== GENERATED PLAN ===== -->
+<div id="generatedPlan">
+  <div class="plan-header">
+    <h2 id="planTitle">Your Personalized Plan</h2>
+    <p id="planSubtitle"></p>
+  </div>
+  <div class="plan-total" id="planTotal"></div>
+  <div class="plan-actions">
+    <button class="plan-act-btn primary" onclick="window.print()">Save / Print PDF</button>
+    <button class="plan-act-btn" id="regenBtn">Regenerate</button>
+    <button class="plan-act-btn" id="editPlanBtn">Edit preferences</button>
+    <button class="plan-act-btn" id="backToBrowseFromPlan">Browse exercises</button>
+  </div>
+  <div id="planOutput"></div>
+</div>
+
+<!-- ===== EXERCISE DETAIL MODAL ===== -->
+<div class="modal-overlay" id="modalOverlay">
+  <div class="modal" id="modal">
+    <button class="modal-close" id="modalClose">×</button>
+    <div class="modal-img" id="modalImg"></div>
+    <h2 id="modalName"></h2>
+    <div class="modal-meta" id="modalMeta"></div>
+    <div class="modal-section">
+      <div class="modal-section-title">Description</div>
+      <p id="modalDesc"></p>
+    </div>
+    <div class="modal-section">
+      <div class="modal-section-title">Sets / Reps</div>
+      <p id="modalSetsReps" style="color:#E8891D;font-weight:700;"></p>
+    </div>
+    <div class="modal-section">
+      <div class="modal-section-title">Coaching Cues</div>
+      <div class="cue-list" id="modalCues"></div>
+    </div>
+    <div class="modal-section">
+      <div class="modal-section-title">StackRep Rationale</div>
+      <div class="rationale-box" id="modalRationale"></div>
+    </div>
+  </div>
+</div>
+
+<script>
+// ===== DATA =====
+const EXERCISES = [
+  {
+    id: "goblet-squat",
+    name: "Goblet Squat",
+    goal: ["Strength/Muscle"],
+    muscleGroup: ["Legs", "Glutes", "Core"],
+    region: [],
+    equipment: ["Dumbbell", "Kettlebell"],
+    phase: "main",
+    level: "Beginner",
+    description: "Hold a weight at chest height and squat down, keeping chest up and knees tracking over toes.",
+    stackrepRationale: "Reinforces a stable, upright spine under load — core of the StackRep approach.",
+    setsReps: "3 × 8–12",
+    durationMin: 6,
+    cues: ["Chest up", "Knees out", "Full depth"],
+    emoji: "🏋️",
+    pairsWith: ["hip-flexor-stretch"]
+  },
+  {
+    id: "hip-flexor-stretch",
+    name: "Hip Flexor Stretch",
+    goal: ["Flexibility", "Mobility", "Posture"],
+    muscleGroup: [],
+    region: ["Hip", "Spine/Back"],
+    equipment: ["Bodyweight"],
+    phase: "cooldown",
+    level: "Beginner",
+    description: "Kneel on one knee and shift weight forward until you feel a deep stretch through the front of the hip and thigh.",
+    stackrepRationale: "Counteracts the seated posture most people hold all day — opens the hip chain StackRep relies on.",
+    setsReps: "2 × 45 sec/side",
+    durationMin: 4,
+    cues: ["Squeeze glute of back leg", "Tall spine", "Don't arch low back"],
+    emoji: "🧘",
+    pairsWith: ["goblet-squat"]
+  },
+  {
+    id: "deadbug",
+    name: "Dead Bug",
+    goal: ["Posture", "Strength/Muscle"],
+    muscleGroup: ["Core"],
+    region: ["Spine/Back"],
+    equipment: ["Bodyweight"],
+    phase: "warmup",
+    level: "Beginner",
+    description: "Lie on your back, arms to ceiling, knees at 90°. Slowly lower opposite arm and leg while keeping lower back pressed to the floor.",
+    stackrepRationale: "Trains the core to stabilise the spine, not just crunch — exactly the anti-extension strength StackRep builds on.",
+    setsReps: "3 × 8/side",
+    durationMin: 5,
+    cues: ["Back flat", "Exhale on lower", "Slow and controlled"],
+    emoji: "🐛",
+    pairsWith: []
+  },
+  {
+    id: "band-pull-apart",
+    name: "Band Pull-Apart",
+    goal: ["Posture", "Strength/Muscle"],
+    muscleGroup: ["Shoulders", "Back"],
+    region: ["Shoulder"],
+    equipment: ["Resistance band"],
+    phase: "warmup",
+    level: "Beginner",
+    description: "Hold a resistance band at shoulder height with straight arms. Pull it apart to full wingspan, squeezing shoulder blades.",
+    stackrepRationale: "Activates the posterior shoulder cuff neglected by most pushing patterns — key for posture rebalancing.",
+    setsReps: "3 × 15",
+    durationMin: 4,
+    cues: ["Arms level", "Squeeze at end", "Don't shrug"],
+    emoji: "💪",
+    pairsWith: []
+  },
+  {
+    id: "kb-swing",
+    name: "Kettlebell Swing",
+    goal: ["Strength/Muscle", "Cardio"],
+    muscleGroup: ["Glutes", "Back", "Core"],
+    region: [],
+    equipment: ["Kettlebell"],
+    phase: "main",
+    level: "Intermediate",
+    description: "Hinge at the hip to swing a kettlebell from between the legs to shoulder height, driving through with a powerful hip snap.",
+    stackrepRationale: "The ultimate full-body hinge that builds posterior-chain strength and cardiovascular capacity simultaneously.",
+    setsReps: "4 × 15",
+    durationMin: 8,
+    cues: ["Hinge, don't squat", "Snap hips at top", "Soft knees on downswing"],
+    emoji: "🔔",
+    pairsWith: []
+  },
+  {
+    id: "cat-cow",
+    name: "Cat-Cow",
+    goal: ["Mobility", "Flexibility", "Posture"],
+    muscleGroup: [],
+    region: ["Spine/Back", "Neck"],
+    equipment: ["Bodyweight"],
+    phase: "warmup",
+    level: "Beginner",
+    description: "On hands and knees, alternate between arching the spine upward (cat) and dropping the belly toward the floor (cow).",
+    stackrepRationale: "Restores full spinal segmentation — the foundation of injury-free movement at every level.",
+    setsReps: "2 × 10 breaths",
+    durationMin: 3,
+    cues: ["Move one vertebra at a time", "Exhale on cat", "No rush"],
+    emoji: "🐱",
+    pairsWith: []
+  },
+  {
+    id: "push-up",
+    name: "Push-Up",
+    goal: ["Strength/Muscle"],
+    muscleGroup: ["Chest", "Shoulders", "Arms", "Core"],
+    region: [],
+    equipment: ["Bodyweight"],
+    phase: "main",
+    level: "Beginner",
+    description: "From a high plank, lower your chest to just above the floor while keeping a rigid body line, then press back up.",
+    stackrepRationale: "The most scalable upper-body press — no equipment, every level, perfect for stacking daily sets.",
+    setsReps: "3 × 10–20",
+    durationMin: 5,
+    cues: ["Elbows at 45°", "Rigid core", "Full range"],
+    emoji: "💥",
+    pairsWith: []
+  },
+  {
+    id: "standing-hamstring-stretch",
+    name: "Standing Hamstring Stretch",
+    goal: ["Flexibility"],
+    muscleGroup: [],
+    region: ["Hamstring", "Knee"],
+    equipment: ["Bodyweight"],
+    phase: "cooldown",
+    level: "Beginner",
+    description: "Place one heel on a low surface, hinge forward from the hips (not the waist) until you feel a stretch down the back of the thigh.",
+    stackrepRationale: "Improves the posterior chain flexibility that makes every squat and hinge pattern safer and deeper.",
+    setsReps: "2 × 40 sec/side",
+    durationMin: 4,
+    cues: ["Hinge at hips", "Flat back", "Soft knee"],
+    emoji: "🦵",
+    pairsWith: []
+  },
+  {
+    id: "single-leg-rdl",
+    name: "Single-Leg RDL",
+    goal: ["Balance", "Strength/Muscle"],
+    muscleGroup: ["Glutes", "Legs", "Core"],
+    region: ["Ankle", "Knee"],
+    equipment: ["Bodyweight", "Dumbbell", "Kettlebell"],
+    phase: "main",
+    level: "Intermediate",
+    description: "Balance on one leg and hinge forward, extending the opposite leg behind you until the torso is near parallel to the floor.",
+    stackrepRationale: "Combines posterior-chain strength with proprioception — building the unilateral stability that everyday life demands.",
+    setsReps: "3 × 8/side",
+    durationMin: 7,
+    cues: ["Level hips", "Soft standing knee", "Eyes down"],
+    emoji: "🦩",
+    pairsWith: []
+  },
+  {
+    id: "plank",
+    name: "Plank",
+    goal: ["Strength/Muscle", "Posture"],
+    muscleGroup: ["Core", "Shoulders", "Glutes"],
+    region: ["Spine/Back"],
+    equipment: ["Bodyweight"],
+    phase: "main",
+    level: "Beginner",
+    description: "Hold a straight body line on forearms and toes, engaging the entire anterior chain for time.",
+    stackrepRationale: "Builds the isometric trunk endurance that protects the spine in every other exercise.",
+    setsReps: "3 × 30–60 sec",
+    durationMin: 5,
+    cues: ["Squeeze glutes", "Pull navel in", "Don't sag hips"],
+    emoji: "🧱",
+    pairsWith: []
+  },
+  {
+    id: "jumping-jacks",
+    name: "Jumping Jacks",
+    goal: ["Cardio", "Mobility"],
+    muscleGroup: ["Full body"],
+    region: ["Ankle", "Shoulder"],
+    equipment: ["Bodyweight"],
+    phase: "warmup",
+    level: "Beginner",
+    description: "Simultaneous jump with feet wide and arms overhead, then return. Keep rhythm and land softly.",
+    stackrepRationale: "Quick cardiovascular primer that activates the whole-body coordination before main work.",
+    setsReps: "2 × 30 sec",
+    durationMin: 2,
+    cues: ["Land soft", "Arms fully overhead", "Keep rhythm"],
+    emoji: "⭐",
+    pairsWith: []
+  },
+  {
+    id: "pigeon-pose",
+    name: "Pigeon Pose",
+    goal: ["Flexibility", "Mobility"],
+    muscleGroup: [],
+    region: ["Hip", "Groin/Adductor"],
+    equipment: ["Bodyweight"],
+    phase: "cooldown",
+    level: "Intermediate",
+    description: "From downward dog, bring one shin forward at an angle and lower the hips toward the floor for a deep hip-opener.",
+    stackrepRationale: "The deepest static hip opener — targets the structures that restrict squat depth and lower-back health.",
+    setsReps: "2 × 60 sec/side",
+    durationMin: 5,
+    cues: ["Square hips", "Breathe into tightness", "Prop with blanket if needed"],
+    emoji: "🕊️",
+    pairsWith: ["goblet-squat"]
+  }
+];
+
+// ===== STATE =====
+const state = {
+  activeFilters: { goal: [], muscleGroup: [], region: [], equipment: [], level: [] },
+  search: '',
+  mode: 'browse', // 'browse' | 'plan' | 'generated'
+  intake: { goals: [], focusAreas: [], equipment: [], sessionMin: 40, level: 'Beginner' },
+  currentStep: 0,
+  generatedItems: []
+};
+
+// ===== BROWSE MODE =====
+function getFilteredExercises() {
+  const f = state.activeFilters;
+  return EXERCISES.filter(ex => {
+    if (state.search && !ex.name.toLowerCase().includes(state.search.toLowerCase())) return false;
+    if (f.goal.length && !f.goal.some(g => ex.goal.includes(g))) return false;
+    if (f.muscleGroup.length && !f.muscleGroup.some(m => ex.muscleGroup.includes(m))) return false;
+    if (f.region.length && !f.region.some(r => ex.region.includes(r))) return false;
+    if (f.equipment.length && !f.equipment.some(e => ex.equipment.includes(e))) return false;
+    if (f.level.length && !f.level.includes(ex.level)) return false;
+    return true;
+  });
+}
+
+function renderGrid() {
+  const results = getFilteredExercises();
+  const grid = document.getElementById('exerciseGrid');
+  document.getElementById('resultCount').innerHTML = `<span>${results.length}</span> exercise${results.length !== 1 ? 's' : ''}`;
+
+  if (!results.length) {
+    grid.innerHTML = `<div class="empty-state"><div style="font-size:48px">🔍</div><p>No exercises match your filters.<br><button class="clear-btn" onclick="clearAllFilters()" style="display:inline-block;width:auto;margin-top:12px;">Clear filters</button></p></div>`;
+    return;
+  }
+
+  grid.innerHTML = results.map(ex => `
+    <div class="exercise-card" onclick="openModal('${ex.id}')">
+      <div class="card-img">${ex.emoji}</div>
+      <div class="card-body">
+        <div class="card-name">${ex.name}</div>
+        <div class="card-tags">
+          ${ex.goal.map(g => `<span class="tag">${g}</span>`).join('')}
+          ${ex.muscleGroup.slice(0,2).map(m => `<span class="tag blue">${m}</span>`).join('')}
+          ${ex.region.slice(0,1).map(r => `<span class="tag green">${r}</span>`).join('')}
+          <span class="tag green">${ex.level}</span>
+        </div>
+      </div>
+    </div>
+  `).join('');
+}
+
+function updateAdaptiveFilters() {
+  const goals = state.activeFilters.goal;
+  const showMuscle = !goals.length || goals.some(g => ['Strength/Muscle','Posture','Balance','Cardio'].includes(g));
+  const showRegion = !goals.length || goals.some(g => ['Flexibility','Mobility','Posture'].includes(g));
+  document.getElementById('muscleSection').style.display = showMuscle ? '' : 'none';
+  document.getElementById('regionSection').style.display = showRegion ? '' : 'none';
+}
+
+document.querySelectorAll('.chip[data-filter]').forEach(chip => {
+  chip.addEventListener('click', () => {
+    const filter = chip.dataset.filter;
+    const value = chip.dataset.value;
+    const arr = state.activeFilters[filter];
+    const idx = arr.indexOf(value);
+    if (idx === -1) arr.push(value); else arr.splice(idx, 1);
+    chip.classList.toggle('selected');
+    updateAdaptiveFilters();
+    renderGrid();
+  });
+});
+
+document.getElementById('searchInput').addEventListener('input', e => {
+  state.search = e.target.value;
+  renderGrid();
+});
+
+function clearAllFilters() {
+  Object.keys(state.activeFilters).forEach(k => state.activeFilters[k] = []);
+  state.search = '';
+  document.getElementById('searchInput').value = '';
+  document.querySelectorAll('.chip').forEach(c => c.classList.remove('selected'));
+  updateAdaptiveFilters();
+  renderGrid();
+}
+document.getElementById('clearFilters').addEventListener('click', clearAllFilters);
+
+// Mobile filter panel
+document.getElementById('mobileFilterToggle').addEventListener('click', () => {
+  const panel = document.getElementById('filterPanel');
+  const icon = document.getElementById('mobileFilterIcon');
+  panel.classList.toggle('open');
+  icon.textContent = panel.classList.contains('open') ? '▲' : '▼';
+});
+
+// ===== MODAL =====
+function openModal(id) {
+  const ex = EXERCISES.find(e => e.id === id);
+  if (!ex) return;
+  document.getElementById('modalImg').textContent = ex.emoji;
+  document.getElementById('modalName').textContent = ex.name;
+  document.getElementById('modalDesc').textContent = ex.description;
+  document.getElementById('modalSetsReps').textContent = ex.setsReps;
+  document.getElementById('modalRationale').textContent = ex.stackrepRationale;
+  document.getElementById('modalMeta').innerHTML = [
+    ...ex.goal.map(g => `<span class="tag">${g}</span>`),
+    ...ex.muscleGroup.map(m => `<span class="tag blue">${m}</span>`),
+    ...ex.region.map(r => `<span class="tag green">${r}</span>`),
+    `<span class="tag green">${ex.level}</span>`,
+    ...ex.equipment.map(e => `<span class="tag" style="background:rgba(255,255,255,0.08);color:#8a8a9a">${e}</span>`)
+  ].join('');
+  document.getElementById('modalCues').innerHTML = ex.cues.map(c => `<span class="cue">${c}</span>`).join('');
+  document.getElementById('modalOverlay').classList.add('open');
+}
+document.getElementById('modalClose').addEventListener('click', () => document.getElementById('modalOverlay').classList.remove('open'));
+document.getElementById('modalOverlay').addEventListener('click', e => { if (e.target === e.currentTarget) e.currentTarget.classList.remove('open'); });
+
+// ===== MODE TOGGLE =====
+function setMode(mode) {
+  state.mode = mode;
+  document.getElementById('browseMode').style.display = mode === 'browse' ? '' : 'none';
+  document.getElementById('planMode').style.display = mode === 'plan' ? 'block' : 'none';
+  document.getElementById('generatedPlan').style.display = mode === 'generated' ? 'block' : 'none';
+  document.getElementById('btnBrowse').classList.toggle('active', mode === 'browse');
+  document.getElementById('btnPlan').classList.toggle('active', mode === 'plan');
+  if (mode === 'plan' && state.currentStep === 0) renderIntake();
+}
+document.getElementById('btnBrowse').addEventListener('click', () => setMode('browse'));
+document.getElementById('btnPlan').addEventListener('click', () => { state.currentStep = 0; setMode('plan'); renderIntake(); });
+
+// ===== PLAN BUILDER =====
+const STEPS = [
+  { id: 'goals', title: 'What are your goals?', sub: 'Pick one or more — plans blend across all selected goals.', multi: true },
+  { id: 'focus', title: 'Which areas do you want to focus on?', sub: 'Select muscle groups or body regions.', multi: true },
+  { id: 'equipment', title: 'What equipment do you have?', sub: 'Select everything available to you.', multi: true },
+  { id: 'session', title: 'How long is your session?', sub: 'We will fit the plan to the time you have.', multi: false },
+  { id: 'level', title: 'What is your level?', sub: 'We include exercises at or below your level.', multi: false }
+];
+
+const STEP_OPTIONS = {
+  goals: ['Strength/Muscle','Flexibility','Posture','Mobility','Balance','Cardio'],
+  focus: ['Chest','Back','Shoulders','Arms','Core','Glutes','Legs','Full body','Hip','Hamstring','Spine/Back','Shoulder','Ankle','Knee','Groin/Adductor'],
+  equipment: ['Bodyweight','Resistance band','Dumbbell','Kettlebell','Barbell','Machine'],
+};
+
+function renderStepIndicators() {
+  const container = document.getElementById('planSteps');
+  container.innerHTML = STEPS.map((s, i) => `
+    <div class="step-indicator">
+      <div class="step-dot ${i < state.currentStep ? 'done' : i === state.currentStep ? 'active' : ''}">${i < state.currentStep ? '✓' : i + 1}</div>
+      ${i < STEPS.length - 1 ? `<div class="step-line ${i < state.currentStep ? 'done' : ''}"></div>` : ''}
+    </div>
+  `).join('');
+}
+
+function getStepValue(stepId) {
+  if (stepId === 'goals') return state.intake.goals;
+  if (stepId === 'focus') return state.intake.focusAreas;
+  if (stepId === 'equipment') return state.intake.equipment;
+  if (stepId === 'session') return [String(state.intake.sessionMin)];
+  if (stepId === 'level') return [state.intake.level];
+  return [];
+}
+
+function renderIntake() {
+  renderStepIndicators();
+  const step = STEPS[state.currentStep];
+  const container = document.getElementById('intakeContainer');
+  const value = getStepValue(step.id);
+  let optionsHTML = '';
+
+  if (step.id === 'session') {
+    const opts = [20, 40, 60];
+    optionsHTML = `<div class="session-options">
+      ${opts.map(m => `<button class="session-option ${state.intake.sessionMin === m ? 'selected' : ''}" onclick="selectSession(${m})">
+        <div class="min">${m}</div><div class="label">minutes</div>
+      </button>`).join('')}
+    </div>`;
+  } else if (step.id === 'level') {
+    const levels = [
+      {id:'Beginner',desc:'New to exercise or returning'},
+      {id:'Intermediate',desc:'Training for 6+ months'},
+      {id:'Advanced',desc:'Years of consistent training'}
+    ];
+    optionsHTML = `<div class="level-options">
+      ${levels.map(l => `<button class="level-option ${state.intake.level === l.id ? 'selected' : ''}" onclick="selectLevel('${l.id}')">
+        <div class="lv">${l.id}</div><div class="desc">${l.desc}</div>
+      </button>`).join('')}
+    </div>`;
+  } else {
+    const opts = STEP_OPTIONS[step.id];
+    optionsHTML = `<div class="multi-chips">
+      ${opts.map(o => `<button class="choice-chip ${value.includes(o) ? 'selected' : ''}" onclick="toggleIntakeChip('${step.id}','${o}',this)">${o}</button>`).join('')}
+    </div>`;
+  }
+
+  const isFirst = state.currentStep === 0;
+  const isLast = state.currentStep === STEPS.length - 1;
+
+  container.innerHTML = `
+    <div class="intake-card">
+      <h2>${step.title}</h2>
+      <p class="sub">${step.sub}</p>
+      ${optionsHTML}
+      <div class="intake-nav">
+        ${!isFirst ? `<button class="btn-back" onclick="goStep(-1)">← Back</button>` : '<div></div>'}
+        <button class="btn-next" id="nextBtn" onclick="${isLast ? 'generatePlan()' : 'goStep(1)'}">${isLast ? '🎯 Generate My Plan' : 'Next →'}</button>
+      </div>
+    </div>
+  `;
+  updateNextBtn();
+}
+
+function toggleIntakeChip(stepId, value, el) {
+  const map = { goals: 'goals', focus: 'focusAreas', equipment: 'equipment' };
+  const arr = state.intake[map[stepId]];
+  const idx = arr.indexOf(value);
+  if (idx === -1) arr.push(value); else arr.splice(idx, 1);
+  el.classList.toggle('selected');
+  updateNextBtn();
+}
+
+function selectSession(min) {
+  state.intake.sessionMin = min;
+  document.querySelectorAll('.session-option').forEach(b => b.classList.remove('selected'));
+  event.currentTarget.classList.add('selected');
+}
+function selectLevel(lv) {
+  state.intake.level = lv;
+  document.querySelectorAll('.level-option').forEach(b => b.classList.remove('selected'));
+  event.currentTarget.classList.add('selected');
+}
+
+function updateNextBtn() {
+  const btn = document.getElementById('nextBtn');
+  if (!btn) return;
+  const step = STEPS[state.currentStep];
+  const val = getStepValue(step.id);
+  btn.disabled = val.length === 0;
+}
+
+function goStep(dir) {
+  state.currentStep = Math.max(0, Math.min(STEPS.length - 1, state.currentStep + dir));
+  renderIntake();
+}
+
+// ===== PLAN GENERATION =====
+const LEVEL_ORDER = { Beginner: 0, Intermediate: 1, Advanced: 2 };
+
+function generatePlan() {
+  const { goals, focusAreas, equipment, sessionMin, level } = state.intake;
+  const maxLevel = LEVEL_ORDER[level];
+
+  let candidates = EXERCISES.filter(ex => {
+    if (LEVEL_ORDER[ex.level] > maxLevel) return false;
+    const goalMatch = !goals.length || goals.some(g => ex.goal.includes(g));
+    const equipMatch = !equipment.length || equipment.some(e => ex.equipment.includes(e));
+    const focusMatch = !focusAreas.length || focusAreas.some(f => ex.muscleGroup.includes(f) || ex.region.includes(f));
+    return goalMatch && equipMatch && (focusMatch || !focusAreas.length);
+  });
+
+  // If too few, relax focus-area filter
+  if (candidates.length < 3) {
+    candidates = EXERCISES.filter(ex => {
+      if (LEVEL_ORDER[ex.level] > maxLevel) return false;
+      const goalMatch = !goals.length || goals.some(g => ex.goal.includes(g));
+      const equipMatch = !equipment.length || equipment.some(e => ex.equipment.includes(e));
+      return goalMatch && equipMatch;
+    });
+  }
+
+  const warmup = candidates.filter(e => e.phase === 'warmup');
+  const main = candidates.filter(e => e.phase === 'main');
+  const cooldown = candidates.filter(e => e.phase === 'cooldown');
+
+  const plan = [];
+  let total = 0;
+
+  const add = (pool, max) => {
+    for (const ex of pool) {
+      if (plan.find(p => p.id === ex.id)) continue;
+      if (plan.length >= max || total + ex.durationMin > sessionMin + 5) break;
+      plan.push(ex);
+      total += ex.durationMin;
+    }
+  };
+
+  add(warmup.slice(0, 2), 2);
+  add(main, 20);
+  add(cooldown.slice(0, 3), 20);
+
+  if (plan.length === 0) {
+    alert('No exercises match your selections. Try loosening your filters.');
+    return;
+  }
+
+  state.generatedItems = plan;
+  renderGeneratedPlan();
+  setMode('generated');
+}
+
+function renderGeneratedPlan() {
+  const { goals, level, sessionMin } = state.intake;
+  document.getElementById('planTitle').textContent = `Your ${level} Plan`;
+  document.getElementById('planSubtitle').textContent = `Targeting: ${goals.join(', ') || 'General fitness'} · ${sessionMin}-min session`;
+
+  const total = state.generatedItems.reduce((s, e) => s + e.durationMin, 0);
+  document.getElementById('planTotal').textContent = `⏱ Estimated duration: ~${total} min · ${state.generatedItems.length} exercises`;
+
+  const phases = [
+    { key: 'warmup', label: 'Warm-Up / Mobility' },
+    { key: 'main', label: 'Main Work' },
+    { key: 'cooldown', label: 'Flexibility / Cool-Down' }
+  ];
+
+  document.getElementById('planOutput').innerHTML = phases.map(ph => {
+    const items = state.generatedItems.filter(e => e.phase === ph.key);
+    if (!items.length) return '';
+    return `<div class="phase-group">
+      <div class="phase-label">${ph.label}</div>
+      ${items.map(ex => `
+        <div class="plan-item" id="pi-${ex.id}">
+          <div class="plan-item-icon">${ex.emoji}</div>
+          <div class="plan-item-info">
+            <div class="plan-item-name">${ex.name}</div>
+            <div class="plan-item-meta">${ex.setsReps} · ~${ex.durationMin} min</div>
+            <div class="plan-item-cues">${ex.cues.join(' · ')}</div>
+          </div>
+          <div class="plan-item-actions">
+            <button class="plan-item-btn" title="View detail" onclick="openModal('${ex.id}')">👁</button>
+            <button class="plan-item-btn remove" title="Remove" onclick="removePlanItem('${ex.id}')">✕</button>
+          </div>
+        </div>
+      `).join('')}
+    </div>`;
+  }).join('');
+}
+
+function removePlanItem(id) {
+  state.generatedItems = state.generatedItems.filter(e => e.id !== id);
+  renderGeneratedPlan();
+}
+
+document.getElementById('regenBtn').addEventListener('click', generatePlan);
+document.getElementById('editPlanBtn').addEventListener('click', () => { state.currentStep = 0; setMode('plan'); renderIntake(); });
+document.getElementById('backToBrowseFromPlan').addEventListener('click', () => setMode('browse'));
+
+// "Not sure" quick quiz
+document.getElementById('notSureBtn').addEventListener('click', () => {
+  state.intake = { goals: ['Strength/Muscle','Flexibility'], focusAreas: ['Core','Hip'], equipment: ['Bodyweight'], sessionMin: 20, level: 'Beginner' };
+  generatePlan();
+});
+
+// ===== NAV TOGGLE =====
+document.getElementById('navToggle').addEventListener('click', () => {
+  document.getElementById('navLinks').classList.toggle('open');
+});
+
+// ===== INIT =====
+renderGrid();
+</script>
+</body>
+</html>
