@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XWR58ZESZ8"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-XWR58ZESZ8');
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Methodology — Stackrep Fitness</title>
+  <meta name="description" content="The micro-workout philosophy behind Stackrep: why short sets throughout the day beat a single gym session for building a lasting fitness habit.">
+  <meta property="og:title" content="Methodology — Stackrep Fitness">
+  <meta property="og:description" content="The micro-workout philosophy behind Stackrep: why short sets throughout the day beat a single gym session for building a lasting fitness habit.">
+  <meta property="og:image" content="https://stackrep.fit/app-screenshot.png">
+  <meta property="og:url" content="https://stackrep.fit/methodology.html">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Methodology — Stackrep Fitness">
+  <meta name="twitter:description" content="The micro-workout philosophy behind Stackrep: why short sets throughout the day beat a single gym session for building a lasting fitness habit.">
+  <meta name="twitter:image" content="https://stackrep.fit/app-screenshot.png">
+  <link rel="icon" type="image/png" href="icon.png">
+  <link rel="apple-touch-icon" href="icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+/* ===== RESET & BASE ===== */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  background: #0a0a0f;
+  color: #ffffff;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+a { color: #E8891D; text-decoration: none; transition: color 0.2s; }
+a:hover { color: #f5a040; text-decoration: underline; }
+img { max-width: 100%; display: block; }
+
+/* ===== NAV ===== */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  background: rgba(10,10,15,0.85); backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+.nav-inner {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 16px 24px; max-width: 1100px; margin: 0 auto;
+}
+.nav-brand {
+  display: flex; align-items: center; gap: 12px;
+  font-size: 20px; font-weight: 800; color: #fff; text-decoration: none;
+}
+.nav-brand:hover { color: #fff; text-decoration: none; }
+.nav-brand img { width: 36px; height: 36px; border-radius: 8px; }
+.nav-links { display: flex; gap: 32px; list-style: none; align-items: center; }
+.nav-links > li > a {
+  font-size: 14px; font-weight: 500; color: #8a8a9a;
+  transition: color 0.2s; text-decoration: none;
+}
+.nav-links > li > a:hover { color: #fff; text-decoration: none; }
+.nav-cta {
+  padding: 10px 24px; background: #E8891D; color: #fff;
+  font-size: 14px; font-weight: 600; border-radius: 10px;
+  transition: transform 0.2s, box-shadow 0.2s; text-decoration: none;
+}
+.nav-cta:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(232,137,29,0.4); color: #fff; text-decoration: none; }
+
+/* Dropdown */
+.nav-dropdown { position: relative; }
+.nav-dropdown-toggle {
+  display: flex; align-items: center; gap: 5px; cursor: pointer;
+  font-size: 14px; font-weight: 500; color: #8a8a9a;
+  transition: color 0.2s; text-decoration: none !important;
+  user-select: none;
+}
+.nav-dropdown-toggle:hover { color: #fff !important; }
+.nav-dropdown-toggle svg { transition: transform 0.2s; }
+.nav-dropdown:hover .nav-dropdown-toggle svg,
+.nav-dropdown:focus-within .nav-dropdown-toggle svg { transform: rotate(180deg); }
+.nav-dropdown-menu {
+  position: absolute; top: calc(100% + 12px); left: 50%; transform: translateX(-50%) translateY(6px);
+  background: #111118; border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 14px; padding: 8px; min-width: 190px;
+  opacity: 0; pointer-events: none;
+  transition: opacity 0.18s, transform 0.18s;
+  box-shadow: 0 16px 48px rgba(0,0,0,0.5);
+  display: flex; flex-direction: column; gap: 2px;
+}
+.nav-dropdown:hover .nav-dropdown-menu,
+.nav-dropdown:focus-within .nav-dropdown-menu {
+  opacity: 1; pointer-events: all; transform: translateX(-50%) translateY(0);
+}
+.nav-dropdown-menu a {
+  font-size: 13px; font-weight: 500; color: #8a8a9a;
+  padding: 9px 14px; border-radius: 8px;
+  display: block; text-decoration: none !important;
+  transition: background 0.15s, color 0.15s;
+}
+.nav-dropdown-menu a:hover { background: rgba(255,255,255,0.06); color: #fff !important; }
+.nav-dropdown-menu .dropdown-divider {
+  height: 1px; background: rgba(255,255,255,0.06); margin: 6px 8px;
+}
+
+@media (max-width: 768px) {
+  .nav-links { display: none; }
+  .nav-cta { display: none; }
+}
+
+/* ===== PAGE HEADER ===== */
+.page-header {
+  padding: 140px 24px 60px;
+  text-align: center;
+  position: relative;
+}
+.page-header::before {
+  content: ''; position: absolute; inset: 0;
+  background: radial-gradient(ellipse at 50% 0%, rgba(232,137,29,0.1) 0%, transparent 60%);
+  pointer-events: none;
+}
+.page-label {
+  font-size: 13px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase;
+  color: #E8891D; margin-bottom: 16px; position: relative;
+}
+.page-header h1 {
+  font-size: clamp(36px, 5vw, 56px); font-weight: 900; line-height: 1.1;
+  max-width: 720px; margin: 0 auto 20px; position: relative;
+}
+.page-subtitle {
+  font-size: 18px; color: #8a8a9a; max-width: 560px; margin: 0 auto;
+  line-height: 1.7; position: relative;
+}
+
+/* ===== CONTENT ===== */
+.content-body {
+  max-width: 680px; margin: 0 auto; padding: 0 24px 100px;
+}
+.content-body h2 {
+  font-size: 28px; font-weight: 800; margin: 56px 0 20px;
+  color: #fff; line-height: 1.2;
+}
+.content-body p {
+  font-size: 17px; color: #c0c0d0; line-height: 1.8; margin-bottom: 20px;
+}
+.content-body strong { color: #fff; }
+.content-body blockquote {
+  border-left: 3px solid #E8891D;
+  padding: 16px 24px; margin: 32px 0;
+  background: rgba(232,137,29,0.06);
+  border-radius: 0 12px 12px 0;
+}
+.content-body blockquote p {
+  font-size: 18px; color: #e0e0e8; font-style: italic; margin-bottom: 0;
+}
+.content-body ul {
+  margin: 0 0 20px 0; padding: 0;
+  list-style: none;
+}
+.content-body ul li {
+  font-size: 17px; color: #c0c0d0; line-height: 1.8;
+  padding: 8px 0 8px 28px; position: relative;
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+}
+.content-body ul li:last-child { border-bottom: none; }
+.content-body ul li::before {
+  content: '→'; position: absolute; left: 0;
+  color: #E8891D; font-weight: 700;
+}
+
+/* Principle cards */
+.principle-grid {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 20px; margin: 32px 0;
+}
+.principle-card {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 16px; padding: 24px;
+}
+.principle-card .num {
+  font-size: 13px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase;
+  color: #E8891D; margin-bottom: 10px;
+}
+.principle-card h3 {
+  font-size: 18px; font-weight: 700; color: #fff; margin-bottom: 10px;
+}
+.principle-card p {
+  font-size: 15px; color: #8a8a9a; line-height: 1.7; margin-bottom: 0;
+}
+
+/* ===== CTA ===== */
+.blog-cta {
+  text-align: center; padding: 60px 24px 80px;
+  border-top: 1px solid rgba(255,255,255,0.06);
+  max-width: 680px; margin: 0 auto;
+}
+.blog-cta h2 { font-size: 32px; font-weight: 800; margin-bottom: 16px; }
+.blog-cta p { font-size: 17px; color: #8a8a9a; margin-bottom: 32px; line-height: 1.7; }
+.btn-primary {
+  display: inline-flex; align-items: center; gap: 10px;
+  padding: 16px 36px; background: #E8891D; color: #fff;
+  font-size: 16px; font-weight: 700; border-radius: 14px;
+  transition: transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 12px 36px rgba(232,137,29,0.3);
+  text-decoration: none;
+}
+.btn-primary:hover { transform: translateY(-3px); box-shadow: 0 18px 48px rgba(232,137,29,0.4); color: #fff; text-decoration: none; }
+.price-note { font-size: 14px; color: #8a8a9a; margin-top: 16px; font-style: italic; }
+
+/* ===== FOOTER ===== */
+footer {
+  background: #0a0a0f; border-top: 1px solid rgba(255,255,255,0.06);
+  padding: 40px 0;
+}
+.footer-inner {
+  max-width: 1100px; margin: 0 auto; padding: 0 24px;
+  display: flex; justify-content: space-between; align-items: center;
+  flex-wrap: wrap; gap: 16px;
+}
+.footer-inner p { font-size: 13px; color: #555; }
+.footer-inner a { font-size: 13px; color: #8a8a9a; text-decoration: none; }
+.footer-inner a:hover { color: #fff; text-decoration: none; }
+.footer-links { display: flex; gap: 24px; }
+@media (max-width: 600px) {
+  .footer-inner { flex-direction: column; text-align: center; }
+}
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a href="/" class="nav-brand">
+      <img src="icon.png" alt="Stackrep"> Stackrep
+    </a>
+    <ul class="nav-links">
+      <li class="nav-dropdown">
+        <a href="#" class="nav-dropdown-toggle" onclick="return false;">
+          Application
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="currentColor"><path d="M2 4l4 4 4-4"/></svg>
+        </a>
+        <div class="nav-dropdown-menu">
+          <a href="/#features">Features</a>
+          <a href="/#how">How It Works</a>
+          <a href="/#pricing">Pricing</a>
+          <div class="dropdown-divider"></div>
+          <a href="getting-started.html">Getting Started</a>
+          <a href="methodology.html">Methodology</a>
+        </div>
+      </li>
+      <li><a href="exercises.html">Exercises</a></li>
+      <li><a href="blog.html">Blog</a></li>
+      <li><a href="faq.html">FAQ</a></li>
+    </ul>
+    <a href="https://apps.apple.com/app/stackrep-fitness/id6759266222" class="nav-cta">Download Free</a>
+  </div>
+</nav>
+
+<!-- PAGE HEADER -->
+<header class="page-header">
+  <div class="page-label">Methodology</div>
+  <h1>The Micro-Workout System</h1>
+  <p class="page-subtitle">You don't need a gym or an hour to spare. You need a handful of exercises, a few minutes scattered through your day, and a way to stay honest.</p>
+</header>
+
+<!-- CONTENT -->
+<article class="content-body">
+
+  <p>The traditional approach to fitness assumes you have time. A 45-minute gym session, a proper warm-up, a cool-down, a commute. For a lot of people — parents, full-time workers, anyone with a packed schedule — that assumption doesn't hold. And when the session can't happen, nothing happens.</p>
+  <p>Stackrep is built around a different assumption: <strong>you have two minutes, multiple times a day.</strong> That's enough.</p>
+
+  <h2>What is a micro-workout?</h2>
+  <p>A micro-workout is a single set of any exercise — done whenever you have a spare moment. Between meetings. While the kettle boils. Before breakfast. After putting the kids to bed. You don't change clothes. You don't warm up. You just do the set.</p>
+  <p>Individually, each set feels trivial. Accumulated across a full day — and across weeks — it adds up to real, consistent training volume. More importantly, it builds a habit that doesn't break when your schedule changes.</p>
+
+  <blockquote>
+    <p>Your training doesn't have to be a single, unbroken workout. Split it into small bursts throughout the day and get the same benefit.</p>
+  </blockquote>
+
+  <h2>The three principles</h2>
+
+  <div class="principle-grid">
+    <div class="principle-card">
+      <div class="num">01</div>
+      <h3>Pick a small set of exercises</h3>
+      <p>Choose 6–10 exercises that cover your whole body. Chest, back, shoulders, arms, legs, core. The exact selection matters less than having one. You can always change it later.</p>
+    </div>
+    <div class="principle-card">
+      <div class="num">02</div>
+      <h3>Set a daily target per exercise</h3>
+      <p>Decide how many sets of each exercise you want to hit in a day. Start low — 3 or 4 sets is enough. The goal is consistency, not maximum volume on day one.</p>
+    </div>
+    <div class="principle-card">
+      <div class="num">03</div>
+      <h3>Tap every time you complete a set</h3>
+      <p>Every set gets a tap in Stackrep. That's the whole system. The app tracks your daily progress, fills your ring, and shows your consistency on a calendar over time.</p>
+    </div>
+  </div>
+
+  <h2>Why it works</h2>
+  <p>The biggest predictor of fitness progress isn't intensity — it's consistency. A moderate workout done daily beats an intense workout done occasionally every time. Micro-workouts make consistency the path of least resistance, because there's no logistical barrier to getting started.</p>
+  <p>There's also a psychological advantage: checking off a set gives you a small, immediate reward. The progress ring filling up. The calendar staying green. These small signals keep the habit alive between the days when motivation is low.</p>
+
+  <h2>What you don't need</h2>
+  <ul>
+    <li>A gym membership</li>
+    <li>A dedicated workout hour</li>
+    <li>Special equipment (most exercises are bodyweight or resistance band)</li>
+    <li>A strict program or periodization plan</li>
+    <li>Rest days scheduled in advance</li>
+  </ul>
+
+  <h2>Who this is for</h2>
+  <p>This approach was designed for people with full lives. Parents. Office workers. Anyone whose schedule is unpredictable or packed. It's not designed for competitive athletes or anyone chasing a specific performance target — for those goals, a structured program with a coach is the better path.</p>
+  <p>If your goal is to <strong>keep your body moving, maintain muscle, and feel better</strong> — without fitness becoming another thing you have to find time for — this system is for you.</p>
+
+</article>
+
+<!-- CTA -->
+<section class="blog-cta">
+  <h2>Ready to start?</h2>
+  <p>Pick your exercises, set your daily targets, and tap your first set. The habit builds from there.</p>
+  <a href="https://apps.apple.com/app/stackrep-fitness/id6759266222" class="btn-primary">
+    <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+    Download Free
+  </a>
+  <p class="price-note">Completely free. No subscriptions, no fees, no ads.</p>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <p>&copy; 2026 Stackrep Fitness. All rights reserved.</p>
+    <div class="footer-links">
+      <a href="/">Home</a>
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="mailto:gyepesarpi@gmail.com">Contact</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
