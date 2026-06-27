@@ -60,7 +60,6 @@
     grid.innerHTML = list.map(ex => `
       <div class="exercise-card" data-id="${ex.id}" role="button" tabindex="0" aria-label="${ex.name}">
         <div class="card-top">
-          <div class="card-emoji">${ex.emoji}</div>
           <div class="card-meta">
             <div class="card-category">${ex.category}</div>
             <div class="card-name">${ex.name}</div>
@@ -87,7 +86,6 @@
       <div class="modal">
         <button class="modal-close" aria-label="Close" id="modal-close-btn">✕</button>
         <div class="modal-top">
-          <div class="modal-emoji">${ex.emoji}</div>
           <div class="modal-heading">
             <div class="modal-category">${ex.category}</div>
             <div class="modal-title">${ex.name}</div>
