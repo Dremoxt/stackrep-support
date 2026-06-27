@@ -131,5 +131,18 @@
 
 <script src="exercises-data.js"></script>
 <script src="exercises.js"></script>
+<script>
+function toggleSubnav(btn) {
+  var s = document.getElementById('subnav');
+  var open = s.classList.toggle('open');
+  btn.querySelector('svg').style.transform = open ? 'rotate(180deg)' : '';
+}
+document.addEventListener('click', function(e) {
+  if (!e.target.closest('#appToggle') && !e.target.closest('#subnav')) {
+    var s = document.getElementById('subnav');
+    if (s) { s.classList.remove('open'); var btn = document.getElementById('appToggle'); if (btn) btn.querySelector('svg').style.transform = ''; }
+  }
+});
+</script>
 </body>
 </html>
