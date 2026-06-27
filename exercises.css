@@ -206,6 +206,7 @@ nav {
   color: #8a8a9a;
 }
 .tag-band { background: rgba(232,137,29,0.12); color: #E8891D; }
+.tag-position { background: rgba(120,120,200,0.12); color: #aab0f0; }
 
 .card-desc {
   font-size: 13px; color: #666; line-height: 1.6;

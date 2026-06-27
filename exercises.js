@@ -10,6 +10,7 @@
   let activeCategory = '';
   let activeType = '';
   let activeExtra = '';
+  let activePosition = '';
   let activeSearch = '';
 
   const grid       = document.getElementById('exercise-grid');
@@ -17,6 +18,7 @@
   const selCat     = document.getElementById('filter-category');
   const selType    = document.getElementById('filter-type');
   const selExtra   = document.getElementById('filter-extra');
+  const selPos     = document.getElementById('filter-position');
   const searchEl   = document.getElementById('search-input');
   const resetBtn   = document.getElementById('filter-reset');
   const overlay    = document.getElementById('modal-overlay');
@@ -25,14 +27,15 @@
   selCat.addEventListener('change', () => { activeCategory = selCat.value; render(); });
   selType.addEventListener('change', () => { activeType = selType.value; render(); });
   selExtra.addEventListener('change', () => { activeExtra = selExtra.value; render(); });
+  selPos.addEventListener('change', () => { activePosition = selPos.value; render(); });
   searchEl.addEventListener('input', () => { activeSearch = searchEl.value.trim().toLowerCase(); render(); });
   resetBtn.addEventListener('click', reset);
   overlay.addEventListener('click', e => { if (e.target === overlay) closeModal(); });
   document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
 
   function reset() {
-    activeCategory = activeType = activeExtra = activeSearch = '';
-    selCat.value = selType.value = selExtra.value = '';
+    activeCategory = activeType = activeExtra = activePosition = activeSearch = '';
+    selCat.value = selType.value = selExtra.value = selPos.value = '';
     searchEl.value = '';
     render();
   }
@@ -42,6 +45,7 @@
       if (activeCategory && ex.category !== activeCategory) return false;
       if (activeType && ex.type !== activeType) return false;
       if (activeExtra && ex.extra !== activeExtra) return false;
+      if (activePosition && ex.position !== activePosition) return false;
       if (activeSearch) {
         const hay = (ex.name + ' ' + ex.description + ' ' + ex.category).toLowerCase();
         if (!hay.includes(activeSearch)) return false;
@@ -68,6 +72,7 @@
         <div class="card-tags">
           <span class="tag${ex.type === 'Resistance Band' ? ' tag-band' : ''}">${ex.type}</span>
           ${ex.extra !== 'none' ? `<span class="tag">${EXTRA_LABELS[ex.extra]}</span>` : ''}
+          <span class="tag tag-position">${ex.position}</span>
         </div>
         <div class="card-desc">${ex.description}</div>
       </div>
