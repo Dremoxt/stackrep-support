@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XWR58ZESZ8"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-XWR58ZESZ8');
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Exercises — Stackrep Fitness</title>
+  <meta name="description" content="Browse 42 bodyweight and resistance band exercises across 7 muscle groups. Filter by muscle, type, and equipment needed.">
+  <meta property="og:title" content="Exercises — Stackrep Fitness">
+  <meta property="og:description" content="Browse 42 bodyweight and resistance band exercises across 7 muscle groups.">
+  <meta property="og:image" content="https://stackrep.fit/app-screenshot.png">
+  <meta property="og:url" content="https://stackrep.fit/exercises.html">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Exercises — Stackrep Fitness">
+  <meta name="twitter:description" content="Browse 42 bodyweight and resistance band exercises across 7 muscle groups.">
+  <meta name="twitter:image" content="https://stackrep.fit/app-screenshot.png">
+  <link rel="icon" type="image/png" href="icon.png">
+  <link rel="apple-touch-icon" href="icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="exercises.css">
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a href="/" class="nav-brand">
+      <img src="icon.png" alt="Stackrep"> Stackrep
+    </a>
+    <ul class="nav-links">
+      <li><a href="/#features">Features</a></li>
+      <li><a href="/#how">How It Works</a></li>
+      <li><a href="exercises.html">Exercises</a></li>
+      <li><a href="blog.html">Blog</a></li>
+      <li><a href="faq.html">FAQ</a></li>
+      <li><a href="/#pricing">Pricing</a></li>
+    </ul>
+    <a href="https://apps.apple.com/app/stackrep-fitness/id6759266222" class="nav-cta">Download Free</a>
+  </div>
+</nav>
+
+<!-- PAGE HEADER -->
+<header class="page-header">
+  <div class="page-label">Exercise Library</div>
+  <h1>All Exercises</h1>
+  <p class="page-subtitle">42 bodyweight and resistance band exercises across 7 muscle groups. No gym required.</p>
+</header>
+
+<!-- BROWSE -->
+<section class="browse-section">
+
+  <div class="filters-bar">
+    <div class="filter-group search-group">
+      <label for="search-input">Search</label>
+      <input type="search" id="search-input" class="search-input" placeholder="e.g. push-up, curl, glute…">
+    </div>
+    <div class="filter-group">
+      <label for="filter-category">Muscle Group</label>
+      <select id="filter-category">
+        <option value="">All muscles</option>
+        <option value="Chest">Chest</option>
+        <option value="Back">Back</option>
+        <option value="Shoulders">Shoulders</option>
+        <option value="Biceps">Biceps</option>
+        <option value="Triceps">Triceps</option>
+        <option value="Legs">Legs</option>
+        <option value="Core">Core</option>
+      </select>
+    </div>
+    <div class="filter-group">
+      <label for="filter-type">Type</label>
+      <select id="filter-type">
+        <option value="">All types</option>
+        <option value="Bodyweight">Bodyweight</option>
+        <option value="Resistance Band">Resistance Band</option>
+      </select>
+    </div>
+    <div class="filter-group">
+      <label for="filter-extra">Equipment Needed</label>
+      <select id="filter-extra">
+        <option value="">Any equipment</option>
+        <option value="none">Nothing extra</option>
+        <option value="anchor">Anchor point</option>
+        <option value="chair">Chair / Bench</option>
+        <option value="wall">Wall</option>
+        <option value="bar">Pull-up bar</option>
+      </select>
+    </div>
+    <button class="filter-reset" id="filter-reset">Reset filters</button>
+  </div>
+
+  <p class="result-count" id="result-count"></p>
+
+  <div class="exercise-grid" id="exercise-grid"></div>
+
+</section>
+
+<!-- MODAL -->
+<div class="modal-overlay" id="modal-overlay" role="dialog" aria-modal="true">
+  <div class="modal-wrapper" id="modal-wrapper"></div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <p>&copy; 2026 Stackrep Fitness. All rights reserved.</p>
+    <div class="footer-links">
+      <a href="/">Home</a>
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="mailto:gyepesarpi@gmail.com">Contact</a>
+    </div>
+  </div>
+</footer>
+
+<script src="exercises-data.js"></script>
+<script src="exercises.js"></script>
+</body>
+</html>
