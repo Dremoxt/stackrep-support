@@ -63,37 +63,6 @@ nav {
 }
 .nav-links > li > a:hover { color: #fff; text-decoration: none; }
 /* Dropdown */
-.nav-dropdown { position: relative; }
-.nav-dropdown-toggle {
-  display: flex; align-items: center; gap: 5px; cursor: pointer;
-  font-size: 14px; font-weight: 500; color: #8a8a9a;
-  transition: color 0.2s; text-decoration: none !important; user-select: none;
-}
-.nav-dropdown-toggle:hover { color: #fff !important; }
-.nav-dropdown-toggle svg { transition: transform 0.2s; }
-.nav-dropdown:hover .nav-dropdown-toggle svg,
-.nav-dropdown:focus-within .nav-dropdown-toggle svg { transform: rotate(180deg); }
-.nav-dropdown-menu {
-  position: absolute; top: calc(100% + 12px); left: 50%; transform: translateX(-50%) translateY(6px);
-  background: #111118; border: 1px solid rgba(255,255,255,0.1);
-  border-radius: 14px; padding: 8px; min-width: 190px;
-  opacity: 0; pointer-events: none;
-  transition: opacity 0.18s, transform 0.18s;
-  box-shadow: 0 16px 48px rgba(0,0,0,0.5);
-  display: flex; flex-direction: column; gap: 2px;
-}
-.nav-dropdown:hover .nav-dropdown-menu,
-.nav-dropdown:focus-within .nav-dropdown-menu {
-  opacity: 1; pointer-events: all; transform: translateX(-50%) translateY(0);
-}
-.nav-dropdown-menu a {
-  font-size: 13px; font-weight: 500; color: #8a8a9a;
-  padding: 9px 14px; border-radius: 8px;
-  display: block; text-decoration: none !important;
-  transition: background 0.15s, color 0.15s;
-}
-.nav-dropdown-menu a:hover { background: rgba(255,255,255,0.06); color: #fff !important; }
-.nav-dropdown-menu .dropdown-divider { height: 1px; background: rgba(255,255,255,0.06); margin: 6px 8px; }
 .nav-cta {
   padding: 10px 24px; background: #E8891D; color: #fff;
   font-size: 14px; font-weight: 600; border-radius: 10px;
@@ -185,6 +154,25 @@ footer {
 @media (max-width: 600px) {
   .footer-inner { flex-direction: column; text-align: center; }
 }
+.subnav { display: none; border-top: 1px solid rgba(255,255,255,0.08); background: rgba(10,10,15,0.97); }
+.subnav.open { display: block; }
+.subnav-inner {
+  max-width: 1100px; margin: 0 auto; padding: 10px 24px;
+  display: flex; gap: 4px; align-items: center; flex-wrap: wrap;
+}
+.subnav-inner a {
+  font-size: 13px; font-weight: 500; color: #8a8a9a;
+  padding: 8px 14px; border-radius: 8px; text-decoration: none;
+  transition: background 0.15s, color 0.15s;
+}
+.subnav-inner a:hover { background: rgba(255,255,255,0.06); color: #fff; text-decoration: none; }
+.nav-app-toggle {
+  background: none; border: none; cursor: pointer;
+  display: flex; align-items: center; gap: 5px;
+  font-size: 14px; font-weight: 500; color: #8a8a9a;
+  transition: color 0.2s; padding: 0; font-family: inherit;
+}
+.nav-app-toggle:hover { color: #fff; }
 </style>
 </head>
 <body>
@@ -192,28 +180,26 @@ footer {
 <!-- NAV -->
 <nav>
   <div class="nav-inner">
-    <a href="/" class="nav-brand">
+    <a href="about.html" class="nav-brand">
       <img src="icon.png" alt="Stackrep"> Stackrep
     </a>
     <ul class="nav-links">
-      <li class="nav-dropdown">
-        <a href="#" class="nav-dropdown-toggle" onclick="return false;">Application <svg width="12" height="12" viewBox="0 0 12 12" fill="currentColor"><path d="M2 4l4 4 4-4"/></svg></a>
-        <div class="nav-dropdown-menu">
-          <a href="/#features">Features</a>
-          <a href="/#how">How It Works</a>
-          <a href="/#pricing">Pricing</a>
-          <div class="dropdown-divider"></div>
-          <a href="about.html">About Stackrep</a>
-          <a href="overview.html">Overview</a>
-          <a href="getting-started.html">Getting Started</a>
-        </div>
-      </li>
+      <li><button class="nav-app-toggle" id="appToggle" onclick="toggleSubnav(this)">Application <svg width="11" height="11" viewBox="0 0 12 12" fill="currentColor" style="transition:transform 0.2s"><path d="M2 4l4 4 4-4"/></svg></button></li>
       <li><a href="exercises.html">Exercises</a></li>
       <li><a href="what-is-stackrep.html">What is Stackrep?</a></li>
       <li><a href="blog.html">Blog</a></li>
       <li><a href="faq.html">FAQ</a></li>
     </ul>
-    <a href="https://apps.apple.com/us/app/stackrep/id6759266222" class="nav-cta">Download Free</a>
+    <a href="https://apps.apple.com/app/stackrep-fitness/id6759266222" class="nav-cta">Download Free</a>
+  </div>
+  <div class="subnav" id="subnav">
+    <div class="subnav-inner">
+      <a href="/#features">Features</a>
+      <a href="/#how">How It Works</a>
+      <a href="/#pricing">Pricing</a>
+      <a href="overview.html">Overview</a>
+      <a href="getting-started.html">Getting Started</a>
+    </div>
   </div>
 </nav>
 
