@@ -414,10 +414,10 @@ footer {
   </div>
   <div class="subnav" id="subnav">
     <div class="subnav-inner">
+      <a href="overview.html">Overview</a>
       <a href="/#features">Features</a>
       <a href="/#how">How It Works</a>
       <a href="/#pricing">Pricing</a>
-      <a href="overview.html">Overview</a>
       <a href="getting-started.html">Getting Started</a>
     </div>
   </div>
@@ -626,5 +626,48 @@ const observer = new IntersectionObserver((entries) => {
 document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
 </script>
 
+<script>
+function toggleSubnav(btn) {
+  var s = document.getElementById('subnav');
+  var open = s.classList.toggle('open');
+  btn.querySelector('svg').style.transform = open ? 'rotate(180deg)' : '';
+}
+document.addEventListener('click', function(e) {
+  if (!e.target.closest('#appToggle') && !e.target.closest('#subnav')) {
+    var s = document.getElementById('subnav');
+    if (s) { s.classList.remove('open'); var btn = document.getElementById('appToggle'); if (btn) btn.querySelector('svg').style.transform = ''; }
+  }
+});
+(function() {
+  var page = window.location.pathname.split('/').pop() || 'index.html';
+  var appPages = ['index.html', 'overview.html', 'getting-started.html'];
+  if (appPages.indexOf(page) > -1 || (page === '' )) {
+    var btn = document.getElementById('appToggle');
+    if (btn) btn.classList.add('active');
+    // Auto-open subnav on application pages
+    var s = document.getElementById('subnav');
+    if (s) { s.classList.add('open'); if (btn) btn.querySelector('svg').style.transform = 'rotate(180deg)'; }
+    // Highlight matching subnav link
+    document.querySelectorAll('.subnav-inner a').forEach(function(a) {
+      var h = a.getAttribute('href').split('/').pop().split('#')[0];
+      if (h === page || (page === '' && a.getAttribute('href') === 'overview.html')) return;
+      if (h === page) a.classList.add('active');
+    });
+    // Highlight overview link when on index (since it's the app landing)
+    if (page === 'index.html' || page === '') {
+      var ov = document.querySelector('.subnav-inner a[href="overview.html"]');
+      // don't highlight overview specifically on index, just keep subnav open
+    } else {
+      document.querySelectorAll('.subnav-inner a').forEach(function(a) {
+        if (a.getAttribute('href') === page) a.classList.add('active');
+      });
+    }
+  } else {
+    document.querySelectorAll('.nav-links > li > a').forEach(function(a) {
+      if (a.getAttribute('href') === page) a.classList.add('active');
+    });
+  }
+})();
+</script>
 </body>
 </html>
