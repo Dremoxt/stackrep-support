@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XWR58ZESZ8"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-XWR58ZESZ8');
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Stackrep — What It Is and How It Works</title>
+  <meta name="description" content="Stackrep is a micro-workout system and a free iPhone app. Here's what it is, how the system works, what the app does, and who it's designed for.">
+  <meta property="og:title" content="About Stackrep — What It Is and How It Works">
+  <meta property="og:description" content="Stackrep is a micro-workout system and a free iPhone app. Here's the full picture.">
+  <meta property="og:image" content="https://stackrep.fit/app-screenshot.png">
+  <meta property="og:url" content="https://stackrep.fit/about.html">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="About Stackrep — What It Is and How It Works">
+  <meta name="twitter:description" content="Stackrep is a micro-workout system and a free iPhone app. Here's the full picture.">
+  <meta name="twitter:image" content="https://stackrep.fit/app-screenshot.png">
+  <link rel="icon" type="image/png" href="icon.png">
+  <link rel="apple-touch-icon" href="icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+/* ===== RESET & BASE ===== */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  background: #0a0a0f;
+  color: #ffffff;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+a { color: #E8891D; text-decoration: none; transition: color 0.2s; }
+a:hover { color: #f5a040; text-decoration: underline; }
+img { max-width: 100%; display: block; }
+
+/* ===== NAV ===== */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  background: rgba(10,10,15,0.85); backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+.nav-inner {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 16px 24px; max-width: 1100px; margin: 0 auto;
+}
+.nav-brand {
+  display: flex; align-items: center; gap: 12px;
+  font-size: 20px; font-weight: 800; color: #fff; text-decoration: none;
+}
+.nav-brand:hover { color: #fff; text-decoration: none; }
+.nav-brand img { width: 36px; height: 36px; border-radius: 8px; }
+.nav-links { display: flex; gap: 32px; list-style: none; align-items: center; }
+.nav-links > li > a {
+  font-size: 14px; font-weight: 500; color: #8a8a9a;
+  transition: color 0.2s; text-decoration: none;
+}
+.nav-links > li > a:hover { color: #fff; text-decoration: none; }
+.nav-cta {
+  padding: 10px 24px; background: #E8891D; color: #fff;
+  font-size: 14px; font-weight: 600; border-radius: 10px;
+  transition: transform 0.2s, box-shadow 0.2s; text-decoration: none;
+}
+.nav-cta:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(232,137,29,0.4); color: #fff; text-decoration: none; }
+.nav-dropdown { position: relative; }
+.nav-dropdown-toggle {
+  display: flex; align-items: center; gap: 5px; cursor: pointer;
+  font-size: 14px; font-weight: 500; color: #8a8a9a;
+  transition: color 0.2s; text-decoration: none !important; user-select: none;
+}
+.nav-dropdown-toggle:hover { color: #fff !important; }
+.nav-dropdown-toggle svg { transition: transform 0.2s; }
+.nav-dropdown:hover .nav-dropdown-toggle svg,
+.nav-dropdown:focus-within .nav-dropdown-toggle svg { transform: rotate(180deg); }
+.nav-dropdown-menu {
+  position: absolute; top: calc(100% + 12px); left: 50%; transform: translateX(-50%) translateY(6px);
+  background: #111118; border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 14px; padding: 8px; min-width: 190px;
+  opacity: 0; pointer-events: none;
+  transition: opacity 0.18s, transform 0.18s;
+  box-shadow: 0 16px 48px rgba(0,0,0,0.5);
+  display: flex; flex-direction: column; gap: 2px;
+}
+.nav-dropdown:hover .nav-dropdown-menu,
+.nav-dropdown:focus-within .nav-dropdown-menu {
+  opacity: 1; pointer-events: all; transform: translateX(-50%) translateY(0);
+}
+.nav-dropdown-menu a {
+  font-size: 13px; font-weight: 500; color: #8a8a9a;
+  padding: 9px 14px; border-radius: 8px;
+  display: block; text-decoration: none !important;
+  transition: background 0.15s, color 0.15s;
+}
+.nav-dropdown-menu a:hover { background: rgba(255,255,255,0.06); color: #fff !important; }
+.nav-dropdown-menu .dropdown-divider { height: 1px; background: rgba(255,255,255,0.06); margin: 6px 8px; }
+@media (max-width: 768px) { .nav-links { display: none; } .nav-cta { display: none; } }
+
+/* ===== HERO ===== */
+.hero {
+  padding: 160px 24px 80px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: ''; position: absolute; inset: 0;
+  background: radial-gradient(ellipse at 50% 0%, rgba(232,137,29,0.12) 0%, transparent 65%);
+  pointer-events: none;
+}
+.hero-label {
+  font-size: 13px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase;
+  color: #E8891D; margin-bottom: 20px; position: relative;
+}
+.hero h1 {
+  font-size: clamp(36px, 5.5vw, 60px); font-weight: 900; line-height: 1.08;
+  max-width: 760px; margin: 0 auto 24px; position: relative;
+}
+.hero-intro {
+  font-size: 19px; color: #8a8a9a; max-width: 600px; margin: 0 auto;
+  line-height: 1.75; position: relative;
+}
+
+/* ===== PAGE BODY ===== */
+.page-body {
+  max-width: 760px; margin: 0 auto; padding: 72px 24px 0;
+}
+
+/* Section dividers */
+.section-block {
+  padding: 64px 0;
+  border-top: 1px solid rgba(255,255,255,0.06);
+}
+.section-block:first-child { border-top: none; }
+
+.block-label {
+  font-size: 11px; font-weight: 700; letter-spacing: 2.5px; text-transform: uppercase;
+  color: #E8891D; margin-bottom: 20px; display: block;
+}
+.block-title {
+  font-size: clamp(24px, 3.5vw, 34px); font-weight: 900; line-height: 1.15;
+  color: #fff; margin-bottom: 20px;
+}
+.block-body p {
+  font-size: 17px; color: #c0c0d0; line-height: 1.85; margin-bottom: 20px;
+}
+.block-body p:last-child { margin-bottom: 0; }
+.block-body strong { color: #fff; }
+.block-body a { color: #E8891D; }
+.block-body a:hover { color: #f5a040; }
+
+/* Pull quote */
+.pull-quote {
+  border-left: 3px solid #E8891D;
+  padding: 18px 28px; margin: 36px 0;
+  background: rgba(232,137,29,0.05);
+  border-radius: 0 14px 14px 0;
+}
+.pull-quote p {
+  font-size: 19px; color: #e0e0e8; font-style: italic;
+  line-height: 1.7; margin-bottom: 0 !important;
+}
+
+/* Inline fact chips */
+.fact-row {
+  display: flex; flex-wrap: wrap; gap: 12px; margin: 28px 0;
+}
+.fact-chip {
+  background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 50px; padding: 10px 20px;
+  font-size: 14px; font-weight: 600; color: #c0c0d0;
+  display: flex; align-items: center; gap: 8px;
+}
+.fact-chip span { color: #E8891D; }
+
+/* App feature list */
+.feature-list {
+  list-style: none; margin: 28px 0;
+  display: flex; flex-direction: column; gap: 18px;
+}
+.feature-list li {
+  display: flex; gap: 16px; align-items: flex-start;
+}
+.feature-list li .fi {
+  width: 40px; height: 40px; flex-shrink: 0;
+  background: rgba(232,137,29,0.1); border: 1px solid rgba(232,137,29,0.15);
+  border-radius: 12px; display: flex; align-items: center; justify-content: center;
+  font-size: 18px;
+}
+.feature-list li .ft { display: flex; flex-direction: column; gap: 3px; }
+.feature-list li .ft strong { font-size: 15px; color: #fff; }
+.feature-list li .ft span { font-size: 14px; color: #8a8a9a; line-height: 1.6; }
+
+/* Explore links */
+.explore-links {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 14px; margin-top: 36px;
+}
+.explore-link {
+  background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.07);
+  border-radius: 14px; padding: 20px 22px;
+  display: flex; align-items: center; justify-content: space-between;
+  text-decoration: none !important;
+  transition: border-color 0.2s, transform 0.2s;
+}
+.explore-link:hover {
+  border-color: rgba(232,137,29,0.3); transform: translateY(-2px); text-decoration: none !important;
+}
+.explore-link-text strong {
+  display: block; font-size: 14px; font-weight: 700; color: #fff; margin-bottom: 3px;
+}
+.explore-link-text span { font-size: 12px; color: #555; }
+.explore-link-arrow { color: #E8891D; font-size: 18px; }
+
+/* ===== CTA ===== */
+.cta-section {
+  padding: 72px 24px 100px; text-align: center;
+  border-top: 1px solid rgba(255,255,255,0.06);
+  max-width: 760px; margin: 0 auto;
+}
+.cta-section h2 { font-size: 30px; font-weight: 800; margin-bottom: 14px; }
+.cta-section p { font-size: 17px; color: #8a8a9a; margin-bottom: 32px; line-height: 1.7; }
+.btn-primary {
+  display: inline-flex; align-items: center; gap: 10px;
+  padding: 16px 36px; background: #E8891D; color: #fff;
+  font-size: 16px; font-weight: 700; border-radius: 14px;
+  transition: transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 12px 36px rgba(232,137,29,0.3);
+  text-decoration: none;
+}
+.btn-primary:hover { transform: translateY(-3px); box-shadow: 0 18px 48px rgba(232,137,29,0.4); color: #fff; text-decoration: none; }
+.price-note { font-size: 14px; color: #8a8a9a; margin-top: 16px; font-style: italic; }
+
+/* ===== FOOTER ===== */
+footer {
+  background: #0a0a0f; border-top: 1px solid rgba(255,255,255,0.06);
+  padding: 40px 0;
+}
+.footer-inner {
+  max-width: 1100px; margin: 0 auto; padding: 0 24px;
+  display: flex; justify-content: space-between; align-items: center;
+  flex-wrap: wrap; gap: 16px;
+}
+.footer-inner p { font-size: 13px; color: #555; }
+.footer-inner a { font-size: 13px; color: #8a8a9a; text-decoration: none; }
+.footer-inner a:hover { color: #fff; text-decoration: none; }
+.footer-links { display: flex; gap: 24px; }
+@media (max-width: 600px) { .footer-inner { flex-direction: column; text-align: center; } }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a href="/" class="nav-brand">
+      <img src="icon.png" alt="Stackrep"> Stackrep
+    </a>
+    <ul class="nav-links">
+      <li class="nav-dropdown">
+        <a href="#" class="nav-dropdown-toggle" onclick="return false;">Application <svg width="12" height="12" viewBox="0 0 12 12" fill="currentColor"><path d="M2 4l4 4 4-4"/></svg></a>
+        <div class="nav-dropdown-menu">
+          <a href="/#features">Features</a>
+          <a href="/#how">How It Works</a>
+          <a href="/#pricing">Pricing</a>
+          <div class="dropdown-divider"></div>
+          <a href="overview.html">Overview</a>
+          <a href="getting-started.html">Getting Started</a>
+          <a href="methodology.html">Methodology</a>
+        </div>
+      </li>
+      <li><a href="exercises.html">Exercises</a></li>
+      <li><a href="blog.html">Blog</a></li>
+      <li><a href="faq.html">FAQ</a></li>
+    </ul>
+    <a href="https://apps.apple.com/app/stackrep-fitness/id6759266222" class="nav-cta">Download Free</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="hero-label">About Stackrep</div>
+  <h1>A simple system for staying active — and an app to keep you honest</h1>
+  <p class="hero-intro">Stackrep is two things at once: a practical approach to fitting exercise into a busy life, and a free iPhone app that makes that approach effortless to follow.</p>
+</header>
+
+<!-- PAGE BODY -->
+<div class="page-body">
+
+  <!-- THE IDEA -->
+  <div class="section-block">
+    <span class="block-label">The Idea</span>
+    <h2 class="block-title">The problem with traditional fitness</h2>
+    <div class="block-body">
+      <p>Most fitness advice assumes you have a free hour, a gym nearby, and the energy at the end of the day to use both. For a lot of people — parents, full-time workers, anyone whose schedule isn't their own — that assumption breaks down quickly.</p>
+      <p>When the gym session can't happen, nothing happens. And when nothing happens often enough, the habit disappears entirely.</p>
+      <p>Stackrep starts from a different premise: <strong>you don't need an hour. You need two minutes, several times a day.</strong></p>
+    </div>
+  </div>
+
+  <!-- THE SYSTEM -->
+  <div class="section-block">
+    <span class="block-label">The System</span>
+    <h2 class="block-title">Micro-workouts: small sets, spread across your day</h2>
+    <div class="block-body">
+      <p>The idea behind Stackrep is simple. Instead of one long workout, you do short bursts — a single set of an exercise — whenever you have a spare moment. Between meetings. Before breakfast. While the kettle boils. After putting the kids to bed.</p>
+
+      <div class="pull-quote">
+        <p>Each individual set takes under two minutes. Accumulated across a full day, they add up to meaningful training volume — without ever requiring a dedicated block of time.</p>
+      </div>
+
+      <p>The system has three moving parts:</p>
+      <div class="fact-row">
+        <div class="fact-chip"><span>01</span> Pick 6–10 exercises</div>
+        <div class="fact-chip"><span>02</span> Set a daily set target</div>
+        <div class="fact-chip"><span>03</span> Tap whenever you finish a set</div>
+      </div>
+      <p>That's it. No program to follow, no rest days to schedule, no warm-up required. The exercises are yours to choose — from our <a href="exercises.html">library of 42 movements</a> across 7 muscle groups, or any exercise you already know.</p>
+      <p>The goal isn't maximum performance. It's consistency. A moderate amount of movement every day, compounding over weeks and months, does more for your health and energy than an intense workout once a week.</p>
+    </div>
+  </div>
+
+  <!-- THE APP -->
+  <div class="section-block">
+    <span class="block-label">The App</span>
+    <h2 class="block-title">Stackrep on iPhone: one tap per set</h2>
+    <div class="block-body">
+      <p>The Stackrep app is the tracking layer for the system. It's designed to do exactly one thing with as little friction as possible: record that you did a set.</p>
+      <p>Open the app, tap the exercise you just did, close the app. The whole interaction takes under five seconds.</p>
+
+      <ul class="feature-list">
+        <li>
+          <div class="fi">⭕</div>
+          <div class="ft">
+            <strong>Progress ring</strong>
+            <span>A single ring fills as you hit sets throughout the day. When it's full, you've hit your target. Simple and satisfying.</span>
+          </div>
+        </li>
+        <li>
+          <div class="fi">📅</div>
+          <div class="ft">
+            <strong>Consistency calendar</strong>
+            <span>Every day you hit your target turns a different color. Streaks and patterns emerge naturally — no charts to read, no analysis required.</span>
+          </div>
+        </li>
+        <li>
+          <div class="fi">📊</div>
+          <div class="ft">
+            <strong>Exercise breakdown</strong>
+            <span>See which exercises you're hitting regularly and which you're neglecting. Weekly and monthly totals show your volume over time.</span>
+          </div>
+        </li>
+        <li>
+          <div class="fi">🎯</div>
+          <div class="ft">
+            <strong>Flexible goals</strong>
+            <span>Set your own daily targets per exercise. Change them any time. There's no prescribed program to follow — you decide what "enough" looks like.</span>
+          </div>
+        </li>
+        <li>
+          <div class="fi">🔓</div>
+          <div class="ft">
+            <strong>Completely free</strong>
+            <span>No subscription, no paywall, no ads. All features unlocked from day one. Your data stays on your device — no account required.</span>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- WHO IT'S FOR -->
+  <div class="section-block">
+    <span class="block-label">Who It's For</span>
+    <h2 class="block-title">Not for everyone — and that's by design</h2>
+    <div class="block-body">
+      <p>Stackrep is not a tool for serious athletes, competitive lifters, or anyone following a structured training program. Those goals are better served by a coach, a gym, and purpose-built tracking software.</p>
+      <p>Stackrep is for people whose primary obstacle isn't motivation or knowledge — it's <strong>time and unpredictability</strong>. People who want to keep their body moving but can't reliably carve out an hour in their day. People who have tried gym memberships and quit because life kept getting in the way.</p>
+      <p>If your goal is simply to stay active, maintain some muscle, feel better, and build a habit that survives a chaotic schedule — Stackrep was built for you.</p>
+    </div>
+  </div>
+
+  <!-- WHERE TO GO NEXT -->
+  <div class="section-block">
+    <span class="block-label">Explore Further</span>
+    <h2 class="block-title">Learn more or get started</h2>
+    <div class="block-body">
+      <p>Each of these pages goes deeper on a specific part of Stackrep.</p>
+    </div>
+    <div class="explore-links">
+      <a href="getting-started.html" class="explore-link">
+        <div class="explore-link-text">
+          <strong>Getting Started</strong>
+          <span>Step-by-step setup guide</span>
+        </div>
+        <span class="explore-link-arrow">→</span>
+      </a>
+      <a href="methodology.html" class="explore-link">
+        <div class="explore-link-text">
+          <strong>Methodology</strong>
+          <span>The micro-workout philosophy</span>
+        </div>
+        <span class="explore-link-arrow">→</span>
+      </a>
+      <a href="exercises.html" class="explore-link">
+        <div class="explore-link-text">
+          <strong>Exercise Library</strong>
+          <span>42 movements, 7 muscle groups</span>
+        </div>
+        <span class="explore-link-arrow">→</span>
+      </a>
+      <a href="faq.html" class="explore-link">
+        <div class="explore-link-text">
+          <strong>FAQ</strong>
+          <span>Common questions answered</span>
+        </div>
+        <span class="explore-link-arrow">→</span>
+      </a>
+      <a href="blog-how-stackrep-was-born.html" class="explore-link">
+        <div class="explore-link-text">
+          <strong>The Story</strong>
+          <span>How and why Stackrep was built</span>
+        </div>
+        <span class="explore-link-arrow">→</span>
+      </a>
+      <a href="overview.html" class="explore-link">
+        <div class="explore-link-text">
+          <strong>Full Overview</strong>
+          <span>Features, benefits, who it's for</span>
+        </div>
+        <span class="explore-link-arrow">→</span>
+      </a>
+    </div>
+  </div>
+
+</div>
+
+<!-- CTA -->
+<section class="cta-section">
+  <h2>Ready to try it?</h2>
+  <p>Download Stackrep for free and do your first set today. No setup, no subscription, no commitment.</p>
+  <a href="https://apps.apple.com/app/stackrep-fitness/id6759266222" class="btn-primary">
+    <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+    Download Free on the App Store
+  </a>
+  <p class="price-note">Free forever. No account needed.</p>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <p>&copy; 2026 Stackrep Fitness. All rights reserved.</p>
+    <div class="footer-links">
+      <a href="/">Home</a>
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="mailto:gyepesarpi@gmail.com">Contact</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
