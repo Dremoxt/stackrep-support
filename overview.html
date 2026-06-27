@@ -298,6 +298,9 @@ footer {
   transition: color 0.2s; padding: 0; font-family: inherit;
 }
 .nav-app-toggle:hover { color: #fff; }
+.nav-links a.active { color: #fff; }
+.nav-app-toggle.active { color: #fff; }
+.subnav-inner a.active { color: #fff; background: rgba(255,255,255,0.06); }
 </style>
 </head>
 <body>
@@ -544,6 +547,23 @@ document.addEventListener('click', function(e) {
     if (s) { s.classList.remove('open'); var btn = document.getElementById('appToggle'); if (btn) btn.querySelector('svg').style.transform = ''; }
   }
 });
+
+(function() {
+  var page = window.location.pathname.split('/').pop() || 'about.html';
+  var appPages = ['index.html', 'overview.html', 'getting-started.html'];
+  if (appPages.indexOf(page) > -1 || (page === '' && window.location.hash)) {
+    var btn = document.getElementById('appToggle');
+    if (btn) btn.classList.add('active');
+    document.querySelectorAll('.subnav-inner a').forEach(function(a) {
+      var h = a.getAttribute('href').split('/').pop().split('#')[0];
+      if (h === page || (page === '' && a.getAttribute('href').startsWith('/'))) a.classList.add('active');
+    });
+  } else {
+    document.querySelectorAll('.nav-links > li > a').forEach(function(a) {
+      if (a.getAttribute('href') === page) a.classList.add('active');
+    });
+  }
+})();
 </script>
 </body>
 </html>

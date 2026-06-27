@@ -290,3 +290,7 @@ footer {
   .filter-group select, .search-input { min-width: unset; }
   .filter-reset { align-self: flex-start; }
 }
+
+.nav-links a.active { color: #fff; }
+.nav-app-toggle.active { color: #fff; }
+.subnav-inner a.active { color: #fff; background: rgba(255,255,255,0.06); }
