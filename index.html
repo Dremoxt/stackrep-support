@@ -404,7 +404,7 @@ footer {
 <!-- NAV -->
 <nav>
   <div class="nav-inner">
-    <a href="about.html" class="nav-brand">
+    <a href="index.html" class="nav-brand">
       <img src="icon.png" alt="Stackrep"> Stackrep
     </a>
     <ul class="nav-links" id="navLinks">
@@ -572,7 +572,7 @@ footer {
   <div class="container">
     <div class="footer-grid">
       <div class="footer-brand">
-        <a class="nav-brand" href="#">
+        <a class="nav-brand" href="index.html">
           <img src="icon.png" alt="Stackrep" style="width:36px;height:36px;border-radius:8px;display:inline-block;vertical-align:middle;"> Stackrep Fitness
         </a>
         <p>Build a daily movement habit. Track your sets, stay consistent, and become the person who moves every day.</p>
@@ -653,7 +653,8 @@ document.addEventListener('click', function(e) {
   var appPages = ['index.html', 'overview.html', 'getting-started.html'];
   if (appPages.indexOf(page) > -1 || (page === '' )) {
     var btn = document.getElementById('appToggle');
-    if (btn) btn.classList.add('active');
+    // Don't mark "Application" active on the home/index page — it's not an app sub-page
+    if (btn && page !== 'index.html' && page !== '') btn.classList.add('active');
     // Auto-open subnav on application pages
     var s = document.getElementById('subnav');
     if (s) { s.classList.add('open'); if (btn) btn.querySelector('svg').style.transform = 'rotate(180deg)'; }
