@@ -67,14 +67,14 @@ nav {
   .nav-links { display: none; }
   .nav-cta { display: none; }
   .nav-cta-btn { display: none; }
-  .nav-mobile { display: block; }
+  nav .nav-mobile { display: block; }
   .nav-links.open {
     display: flex; flex-direction: column; position: absolute;
     top: 100%; left: 0; right: 0; background: rgba(10,10,15,0.98);
     padding: 24px; gap: 20px; border-bottom: 1px solid rgba(255,255,255,0.06);
     z-index: 99;
   }
-  .nav-links.open li a, .nav-links.open li button { font-size: 16px; }
+  .nav-links.open li a, .nav-links.open li button { font-size: 16px; display: block; padding: 8px 0; }
 }
 
 /* FAQ */
@@ -135,7 +135,7 @@ footer {
   border-top: 1px solid rgba(255,255,255,0.06); padding: 40px 0; text-align: center;
   color: #555; font-size: 13px; margin-top: 60px;
 }
-footer a { color: #8a8a9a; }
+footer a { color: #8a8a9a; display: inline-block; padding: 8px 6px; }
 .subnav { display: none; border-top: 1px solid rgba(255,255,255,0.08); background: rgba(10,10,15,0.97); }
 .subnav.open { display: block; }
 .subnav-inner {
@@ -144,7 +144,7 @@ footer a { color: #8a8a9a; }
 }
 .subnav-inner a {
   font-size: 13px; font-weight: 500; color: #8a8a9a;
-  padding: 8px 14px; border-radius: 8px; text-decoration: none;
+  padding: 8px 14px; border-radius: 8px; text-decoration: none; display: inline-block;
   transition: background 0.15s, color 0.15s;
 }
 .subnav-inner a:hover { background: rgba(255,255,255,0.06); color: #fff; text-decoration: none; }

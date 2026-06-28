@@ -88,14 +88,15 @@ nav {
 .nav-cta:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(232,137,29,0.4); }
 .nav-inner .btn-primary { padding: 10px 20px; font-size: 14px; border-radius: 10px; box-shadow: none; }
 .nav-inner .btn-primary:hover { box-shadow: 0 8px 24px rgba(232,137,29,0.4); }
-.nav-mobile { display: none; background: none; border: none; cursor: pointer; }
+.nav-mobile { display: none; background: none; border: none; cursor: pointer; padding: 8px; }
 .nav-mobile span { display: block; width: 24px; height: 2px; background: #fff; margin: 5px 0; transition: 0.3s; }
 
 @media (max-width: 768px) {
   .nav-links { display: none; }
   .nav-cta { display: none; }
   .nav-cta-btn { display: none; }
-  .nav-mobile { display: block; }
+  nav .nav-mobile { display: block; }
+  .nav-links.open li a { display: block; padding: 8px 0; font-size: 16px; }
   .nav-links.open {
     display: flex; flex-direction: column; position: absolute;
     top: 100%; left: 0; right: 0; background: rgba(10,10,15,0.98);
@@ -344,8 +345,8 @@ footer {
 .footer-brand p { color: #8a8a9a; font-size: 14px; margin-top: 12px; max-width: 280px; line-height: 1.7; }
 .footer-col h4 { font-size: 14px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 16px; color: #E8891D; }
 .footer-col ul { list-style: none; }
-.footer-col li { margin-bottom: 10px; }
-.footer-col a { font-size: 14px; color: #8a8a9a; transition: color 0.2s; }
+.footer-col li { margin-bottom: 2px; }
+.footer-col a { font-size: 14px; color: #8a8a9a; transition: color 0.2s; display: inline-block; padding: 8px 0; }
 .footer-col a:hover { color: #fff; }
 .social-links { display: flex; gap: 12px; margin-top: 16px; }
 .social-link {
@@ -382,7 +383,7 @@ footer {
 }
 .subnav-inner a {
   font-size: 13px; font-weight: 500; color: #8a8a9a;
-  padding: 8px 14px; border-radius: 8px; text-decoration: none;
+  padding: 8px 14px; border-radius: 8px; text-decoration: none; display: inline-block;
   transition: background 0.15s, color 0.15s;
 }
 .subnav-inner a:hover { background: rgba(255,255,255,0.06); color: #fff; text-decoration: none; }
