@@ -318,3 +318,46 @@ footer {
 .nav-links a.active { color: #fff; }
 .nav-app-toggle.active { color: #fff; }
 .subnav-inner a.active { color: #fff; background: rgba(255,255,255,0.06); }
+
+/* ===== Mobile navigation (cleaner menu) — mobile only, desktop unchanged ===== */
+@media (max-width: 768px) {
+  /* Hide the app-store button in the top bar so it no longer crowds the logo */
+  .nav-inner .btn-primary { display: none !important; }
+  /* Solid bar + let the menu stack in-flow underneath it */
+  nav { background: #0a0a0f; }
+  .nav-inner { flex-wrap: wrap; }
+  /* keep brand + hamburger on the top row, menu wraps below */
+  .nav-brand { order: 0; }
+  .nav-mobile { order: 1; }
+  .nav-links { order: 2; }
+  /* Main menu: full-width, opaque, left-aligned vertical list */
+  .nav-links { display: none; }
+  .nav-links.open {
+    display: flex; flex-direction: column; align-items: stretch;
+    position: static; width: 100%; flex-basis: 100%;
+    background: #0a0a0f; padding: 8px 0 0; margin: 0; gap: 0; border: none;
+  }
+  .nav-links.open > li { width: 100%; }
+  .nav-links.open > li > a,
+  .nav-links.open > li > button {
+    display: flex; align-items: center; justify-content: space-between;
+    width: 100%; box-sizing: border-box; padding: 16px 24px; margin: 0;
+    font-size: 16px; color: #fff; text-align: left;
+    border-top: 1px solid rgba(255,255,255,0.07); border-radius: 0;
+  }
+  /* Move "Application" to the bottom so its submenu sits directly under it */
+  .nav-links.open > li:first-child { order: 5; }
+  /* Application submenu: indented accordion, only visible while the menu is open */
+  .subnav.open { display: none; }
+  .nav-inner:has(.nav-links.open) + .subnav.open { display: block; }
+  .subnav { flex-basis: 100%; width: 100%; background: #0a0a0f; border: none; }
+  .subnav-inner {
+    flex-direction: column; align-items: stretch;
+    max-width: none; margin: 0; padding: 0; gap: 0;
+  }
+  .subnav-inner a {
+    display: block; width: 100%; box-sizing: border-box;
+    padding: 14px 24px 14px 44px; margin: 0; border-radius: 0; font-size: 15px;
+    border-top: 1px solid rgba(255,255,255,0.05);
+  }
+}
