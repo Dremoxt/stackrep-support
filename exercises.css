@@ -126,7 +126,7 @@ nav {
   display: flex; flex-direction: column; gap: 6px;
 }
 .filter-group label {
-  font-size: 11px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase;
+  font-size: 12px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase;
   color: #555;
 }
 .filter-group select,
@@ -201,7 +201,7 @@ nav {
   display: flex; flex-direction: column; gap: 4px;
 }
 .card-category {
-  font-size: 11px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase;
+  font-size: 12px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase;
   color: #E8891D;
 }
 .card-name {
@@ -212,7 +212,7 @@ nav {
   display: flex; flex-wrap: wrap; gap: 6px;
 }
 .tag {
-  font-size: 11px; font-weight: 600; padding: 3px 8px;
+  font-size: 12px; font-weight: 600; padding: 3px 8px;
   border-radius: 6px; background: rgba(255,255,255,0.06);
   color: #8a8a9a;
 }
@@ -300,7 +300,7 @@ footer {
   flex-wrap: wrap; gap: 16px;
 }
 .footer-inner p { font-size: 13px; color: #555; }
-.footer-inner a { font-size: 13px; color: #8a8a9a; text-decoration: none; }
+.footer-inner a { font-size: 13px; color: #8a8a9a; text-decoration: none; display: inline-block; padding: 8px 6px; }
 .footer-inner a:hover { color: #fff; text-decoration: none; }
 .footer-links { display: flex; gap: 24px; }
 
