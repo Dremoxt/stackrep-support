@@ -83,7 +83,7 @@ nav {
 .nav-mobile { display: none; background: none; border: none; cursor: pointer; padding: 4px; }
 .nav-mobile span { display: block; width: 24px; height: 2px; background: #fff; margin: 5px 0; transition: 0.3s; }
 
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
   .nav-links { display: none; }
   .nav-cta { display: none; }
   .nav-cta-btn { display: none; }
@@ -199,8 +199,8 @@ footer {
 .nav-app-toggle.active { color: #fff; }
 .subnav-inner a.active { color: #fff; background: rgba(255,255,255,0.06); }
 
-/* ===== Mobile navigation (cleaner menu) — mobile only, desktop unchanged ===== */
-@media (max-width: 768px) {
+/* ===== Tablet & mobile navigation (cleaner menu) — desktop unchanged ===== */
+@media (max-width: 1024px) {
   /* Hide the app-store button in the top bar so it no longer crowds the logo */
   .nav-inner .btn-primary { display: none !important; }
   /* Solid bar + let the menu stack in-flow underneath it */
